@@ -1,0 +1,80 @@
+package com.varunbarad.attendancetracker.data.model;
+
+import java.util.ArrayList;
+
+/**
+ * Creator: Varun Barad
+ * Date: 03-01-2018
+ * Project: AttendanceTracker
+ */
+public final class Subject {
+  private long id;
+  private String name;
+  private double threshold;
+  private boolean archived;
+  private ArrayList<Attendance> attendances;
+  
+  public Subject(long id, String name, double threshold, boolean archived, ArrayList<Attendance> attendances) {
+    this.id = id;
+    this.name = name;
+    this.threshold = threshold;
+    this.archived = archived;
+    if (attendances != null) {
+      this.attendances = attendances;
+    } else {
+      this.attendances = new ArrayList<>(0);
+    }
+  }
+  
+  public Subject(String name, double threshold, boolean archived, ArrayList<Attendance> attendances) {
+    this(-1, name, threshold, archived, attendances);
+  }
+  
+  public Subject(String name, double threshold, ArrayList<Attendance> attendances) {
+    this(name, threshold, false, attendances);
+  }
+  
+  public Subject(String name, double threshold) {
+    this(name, threshold, null);
+  }
+  
+  public long getId() {
+    return id;
+  }
+  
+  public void setId(long id) {
+    this.id = id;
+  }
+  
+  public String getName() {
+    return name;
+  }
+  
+  public void setName(String name) {
+    this.name = name;
+  }
+  
+  public double getThreshold() {
+    return threshold;
+  }
+  
+  public void setThreshold(double threshold) {
+    this.threshold = threshold;
+  }
+  
+  public boolean isArchived() {
+    return archived;
+  }
+  
+  public void setArchived(boolean archived) {
+    this.archived = archived;
+  }
+  
+  public ArrayList<Attendance> getAttendances() {
+    return attendances;
+  }
+  
+  public void setAttendances(ArrayList<Attendance> attendances) {
+    this.attendances = attendances;
+  }
+}
