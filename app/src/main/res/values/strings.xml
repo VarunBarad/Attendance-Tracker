@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Attendance Tracker</string>
+
+    <string name="label_attend">Attend</string>
+    <string name="label_skip">Skip</string>
+    <string name="label_cancel">Cancel</string>
 </resources>
