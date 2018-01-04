@@ -77,4 +77,34 @@ public final class Subject {
   public void setAttendances(ArrayList<Attendance> attendances) {
     this.attendances = attendances;
   }
+  
+  public ArrayList<Attendance> getAttended() {
+    ArrayList<Attendance> attended = new ArrayList<>();
+    for (Attendance a : this.attendances) {
+      if (a.getAttendanceStatus() == Attendance.ATTEND) {
+        attended.add(a);
+      }
+    }
+    return attended;
+  }
+  
+  public ArrayList<Attendance> getSkipped() {
+    ArrayList<Attendance> skipped = new ArrayList<>();
+    for (Attendance a : this.attendances) {
+      if (a.getAttendanceStatus() == Attendance.SKIP) {
+        skipped.add(a);
+      }
+    }
+    return skipped;
+  }
+  
+  public ArrayList<Attendance> getCancelled() {
+    ArrayList<Attendance> cancelled = new ArrayList<>();
+    for (Attendance a : this.attendances) {
+      if (a.getAttendanceStatus() == Attendance.CANCEL) {
+        cancelled.add(a);
+      }
+    }
+    return cancelled;
+  }
 }

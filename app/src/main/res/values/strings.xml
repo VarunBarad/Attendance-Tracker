@@ -4,4 +4,10 @@
     <string name="label_attend">Attend</string>
     <string name="label_skip">Skip</string>
     <string name="label_cancel">Cancel</string>
+
+    <string name="message_attendance_canSkip">Classes you can safely skip: %1$d</string>
+    <string name="message_attendance_needAttend">Classes you can need to attend: %1$d</string>
+
+    <string name="PREFS_NAME" translatable="false">com.varunbarad.attendancetracker</string>
+    <string name="PREFS_KEY_COUNT_CANCELLED" translatable="false">count_cancelled</string>
 </resources>
