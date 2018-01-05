@@ -1,9 +1,16 @@
 <resources>
     <string name="app_name">Attendance Tracker</string>
+    <string name="title_subjectsList">Subjects</string>
 
     <string name="label_attend">Attend</string>
     <string name="label_skip">Skip</string>
     <string name="label_cancel">Cancel</string>
+    <string name="label_subjectFilter">Subject Filter</string>
+
+    <string-array name="subjectFilterItems">
+        <item>Current</item>
+        <item>Archived</item>
+    </string-array>
 
     <string name="message_attendance_canSkip">Classes you can safely skip: %1$d</string>
     <string name="message_attendance_needAttend">Classes you can need to attend: %1$d</string>

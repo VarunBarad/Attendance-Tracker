@@ -19,4 +19,13 @@
 
     <style name="AppTheme.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
+    <style name="AppTheme.SpinnerTheme" parent="AppTheme">
+        <item name="colorControlNormal">@color/colorText</item>
+        <item name="android:spinnerItemStyle">@style/SpinnerStyle</item>
+    </style>
+
+    <style name="SpinnerStyle" parent="Widget.AppCompat.TextView.SpinnerItem">
+        <item name="android:textColor">@color/colorText</item>
+    </style>
+
 </resources>
