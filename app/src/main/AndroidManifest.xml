@@ -22,6 +22,8 @@
         </activity>
         <activity android:name=".subject.subjectdetails.SubjectDetailsActivity">
         </activity>
+        <activity android:name=".subject.editsubject.EditSubjectActivity">
+        </activity>
     </application>
 
 </manifest>

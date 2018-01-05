@@ -11,6 +11,7 @@
     <string name="label_add">Add</string>
     <string name="label_edit">Edit</string>
     <string name="label_archive">Archive</string>
+    <string name="label_set">Set</string>
 
     <string name="hint_subjectName">Enter subject name</string>
 
