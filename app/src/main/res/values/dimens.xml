@@ -2,4 +2,7 @@
 <resources>
     <dimen name="elevation_floatingActionButton">6dp</dimen>
     <dimen name="margin_floatingActionButton">16dp</dimen>
+
+    <dimen name="margin_activityHorizontal">16dp</dimen>
+    <dimen name="margin_activityVertical">16dp</dimen>
 </resources>

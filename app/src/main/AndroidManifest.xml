@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".subject.listsubjects.SubjectsListActivity">
         </activity>
+        <activity android:name=".subject.addsubject.AddSubjectActivity">
+        </activity>
     </application>
 
 </manifest>

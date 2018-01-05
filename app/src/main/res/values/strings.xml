@@ -1,11 +1,16 @@
 <resources>
     <string name="app_name">Attendance Tracker</string>
     <string name="title_subjectsList">Subjects</string>
+    <string name="title_addSubject">Add Subject</string>
 
     <string name="label_attend">Attend</string>
     <string name="label_skip">Skip</string>
     <string name="label_cancel">Cancel</string>
     <string name="label_subjectFilter">Subject Filter</string>
+    <string name="label_clear">Clear</string>
+    <string name="label_add">Add</string>
+
+    <string name="hint_subjectName">Enter subject name</string>
 
     <string-array name="subjectFilterItems">
         <item>Current</item>
