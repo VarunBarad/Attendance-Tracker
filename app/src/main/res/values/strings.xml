@@ -9,6 +9,8 @@
     <string name="label_subjectFilter">Subject Filter</string>
     <string name="label_clear">Clear</string>
     <string name="label_add">Add</string>
+    <string name="label_edit">Edit</string>
+    <string name="label_archive">Archive</string>
 
     <string name="hint_subjectName">Enter subject name</string>
 

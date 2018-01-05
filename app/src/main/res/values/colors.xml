@@ -10,4 +10,5 @@
     <color name="colorCancel">#ffffeb3b</color>
 
     <color name="colorSeparator">#77000000</color>
+    <color name="colorIcon">#ffffffff</color>
 </resources>

@@ -27,6 +27,7 @@ android {
 ext {
     supportLibraryVersion = '26.1.0'
     constraintLayoutVersion = '1.0.2'
+    calendarViewLibraryVersion = 'v1.1'
 
     jUnitVersion = '4.12'
     androidTestRunnerVersion = '1.0.1'
@@ -42,6 +43,9 @@ dependencies {
     implementation "com.android.support:cardview-v7:${supportLibraryVersion}"
     implementation "com.android.support:support-v4:${supportLibraryVersion}"
     implementation "com.android.support.constraint:constraint-layout:${constraintLayoutVersion}"
+
+    // Calendar View
+    implementation "com.github.npanigrahy:Custom-Calendar-View:${calendarViewLibraryVersion}"
 
     // JUnit Test Runner
     testImplementation "junit:junit:${jUnitVersion}"

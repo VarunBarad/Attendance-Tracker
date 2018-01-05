@@ -20,6 +20,8 @@
         </activity>
         <activity android:name=".subject.addsubject.AddSubjectActivity">
         </activity>
+        <activity android:name=".subject.subjectdetails.SubjectDetailsActivity">
+        </activity>
     </application>
 
 </manifest>
