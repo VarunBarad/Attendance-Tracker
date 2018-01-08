@@ -2,6 +2,7 @@ package com.varunbarad.attendancetracker.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.v7.preference.PreferenceManager;
 
 import com.varunbarad.attendancetracker.R;
 
@@ -12,7 +13,7 @@ import com.varunbarad.attendancetracker.R;
  */
 public class PreferenceHelper {
   public static boolean countCancelledAsSkipped(Context context) {
-    SharedPreferences preferences = context.getSharedPreferences(context.getString(R.string.PREFS_NAME), Context.MODE_PRIVATE);
+    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
     
     return preferences.getBoolean(context.getString(R.string.PREFS_KEY_COUNT_CANCELLED), false);
   }

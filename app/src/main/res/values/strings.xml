@@ -12,8 +12,14 @@
     <string name="label_edit">Edit</string>
     <string name="label_archive">Archive</string>
     <string name="label_set">Set</string>
+    <string name="label_prefThreshold">Default threshold</string>
+    <string name="label_countCancelled">Count cancelled</string>
 
     <string name="hint_subjectName">Enter subject name</string>
+
+    <string name="desc_prefThreshold">The default threshold for each new subject</string>
+    <string name="desc_prefCountCancelled_off">Cancelled classes are not counted as skipped</string>
+    <string name="desc_prefCountCancelled_on">Cancelled classes are counted as skipped</string>
 
     <string-array name="subjectFilterItems">
         <item>Current</item>
@@ -23,6 +29,6 @@
     <string name="message_attendance_canSkip">Classes you can safely skip: %1$d</string>
     <string name="message_attendance_needAttend">Classes you can need to attend: %1$d</string>
 
-    <string name="PREFS_NAME" translatable="false">com.varunbarad.attendancetracker</string>
+    <string name="PREFS_KEY_THRESHOLD" translatable="false">default_threshold</string>
     <string name="PREFS_KEY_COUNT_CANCELLED" translatable="false">count_cancelled</string>
 </resources>
