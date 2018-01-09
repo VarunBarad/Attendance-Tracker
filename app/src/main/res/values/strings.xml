@@ -21,6 +21,10 @@
     <string name="desc_prefCountCancelled_off">Cancelled classes are not counted as skipped</string>
     <string name="desc_prefCountCancelled_on">Cancelled classes are counted as skipped</string>
 
+    <string name="contentDesc_attend">Button to mark class as attended</string>
+    <string name="contentDesc_skip">Button to mark class as skipped</string>
+    <string name="contentDesc_cancel">Button to mark class as cancelled</string>
+
     <string-array name="subjectFilterItems">
         <item>Current</item>
         <item>Archived</item>
@@ -31,4 +35,8 @@
 
     <string name="PREFS_KEY_THRESHOLD" translatable="false">default_threshold</string>
     <string name="PREFS_KEY_COUNT_CANCELLED" translatable="false">count_cancelled</string>
+
+
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 </resources>

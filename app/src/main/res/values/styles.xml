@@ -29,4 +29,16 @@
         <item name="android:textColor">@color/colorText</item>
     </style>
 
+    <style name="ButtonAttendStyle" parent="Widget.AppCompat.ImageButton">
+        <item name="colorButtonNormal">@color/colorAttend</item>
+    </style>
+
+    <style name="ButtonSkipStyle" parent="Widget.AppCompat.ImageButton">
+        <item name="colorButtonNormal">@color/colorSkip</item>
+    </style>
+
+    <style name="ButtonCancelStyle" parent="Widget.AppCompat.ImageButton">
+        <item name="colorButtonNormal">@color/colorCancel</item>
+    </style>
+
 </resources>
