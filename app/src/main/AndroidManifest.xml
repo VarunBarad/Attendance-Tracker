@@ -36,6 +36,9 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/attendance_widget_info"/>
         </receiver>
+
+        <activity android:name=".widget.subjectselect.SubjectSelectActivity">
+        </activity>
     </application>
 
 </manifest>
