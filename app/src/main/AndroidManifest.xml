@@ -39,6 +39,11 @@
 
         <activity android:name=".widget.subjectselect.SubjectSelectActivity">
         </activity>
+
+        <provider
+            android:name=".data.sqlite.AttendanceProvider"
+            android:authorities="com.varunbarad.attendancetracker"
+            android:exported="false"/>
     </application>
 
 </manifest>
