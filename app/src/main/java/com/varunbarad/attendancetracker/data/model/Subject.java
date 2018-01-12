@@ -107,4 +107,8 @@ public final class Subject {
     }
     return cancelled;
   }
+  
+  public void addAttendance(Attendance attendance) {
+    this.attendances.add(attendance);
+  }
 }
