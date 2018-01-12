@@ -59,14 +59,14 @@ public final class DatabaseHelper {
     
     if (cursor != null) {
       if (cursor.getCount() < 1) {
+        attendances = new ArrayList<>(0);
+      } else {
         attendances = new ArrayList<>(cursor.getCount());
-        
+  
         cursor.moveToFirst();
         do {
           attendances.add(DatabaseHelper.readOneAttendance(cursor));
         } while (cursor.moveToNext());
-      } else {
-        attendances = new ArrayList<>(0);
       }
       
       cursor.close();
@@ -93,22 +93,22 @@ public final class DatabaseHelper {
     ArrayList<Subject> subjects;
     if (cursor != null) {
       if (cursor.getCount() < 1) {
+        subjects = new ArrayList<>(0);
+      } else {
         Hashtable<Long, Subject> subjectsTable = new Hashtable<>(cursor.getCount());
-        
+  
         cursor.moveToFirst();
         do {
           Subject s = DatabaseHelper.readOneSubject(cursor);
           subjectsTable.put(s.getId(), s);
         } while (cursor.moveToNext());
-        
+  
         ArrayList<Attendance> attendances = DatabaseHelper.getAttendance(context, -1);
         for (Attendance a : attendances) {
           subjectsTable.get(a.getSubjectId()).addAttendance(a);
         }
-        
+  
         subjects = new ArrayList<>(subjectsTable.values());
-      } else {
-        subjects = new ArrayList<>(0);
       }
       
       cursor.close();
