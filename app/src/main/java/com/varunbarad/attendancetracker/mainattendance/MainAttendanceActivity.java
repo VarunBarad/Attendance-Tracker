@@ -1,5 +1,7 @@
 package com.varunbarad.attendancetracker.mainattendance;
 
+import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,8 +19,12 @@ import java.util.ArrayList;
 
 public class MainAttendanceActivity extends AppCompatActivity {
   private ActivityMainAttendanceBinding dataBinding;
-  
   private AttendanceSubjectAdapter subjectsAdapter;
+  
+  public static void start(Context context) {
+    Intent starter = new Intent(context, MainAttendanceActivity.class);
+    context.startActivity(starter);
+  }
   
   @Override
   protected void onCreate(Bundle savedInstanceState) {
