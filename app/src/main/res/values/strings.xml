@@ -36,7 +36,8 @@
     <string name="message_attendance_canSkip">Classes you can safely skip: %1$d</string>
     <string name="message_attendance_needAttend">Classes you can need to attend: %1$d</string>
     <string name="message_widget_lagging">Classes you are lagging in: %1$d</string>
-    <string name="message_attendance_noCurrentSubjects">There appears to be no current subjects available\nTry to add a subject from the menu</string>
+    <string name="message_attendance_noCurrentSubjects">There appears to be no current subjects available.\nTry to add a subject from the menu.</string>
+    <string name="message_attendance_noSubjectsForCurrentFilter">There appears to be no subjects for the applied filter.\nTry adding a new subject.</string>
 
     <string name="PREFS_KEY_THRESHOLD" translatable="false">default_threshold</string>
     <string name="PREFS_KEY_COUNT_CANCELLED" translatable="false">count_cancelled</string>

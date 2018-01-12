@@ -25,6 +25,11 @@ public class SubjectsAdapter extends RecyclerView.Adapter<SubjectsAdapter.ViewHo
     this.subjects = subjects;
   }
   
+  public void setSubjects(ArrayList<Subject> subjects) {
+    this.subjects = subjects;
+    this.notifyDataSetChanged();
+  }
+  
   @Override
   public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     LayoutInflater inflater = LayoutInflater.from(parent.getContext());
