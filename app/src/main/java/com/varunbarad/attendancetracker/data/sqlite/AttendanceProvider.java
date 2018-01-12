@@ -122,6 +122,34 @@ public class AttendanceProvider extends ContentProvider {
   }
   
   @Override
+  public int bulkInsert(@NonNull Uri uri, @NonNull ContentValues[] values) {
+    SQLiteDatabase database = this.databaseHelper.getWritableDatabase();
+    
+    switch (AttendanceProvider.uriMatcher.match(uri)) {
+      case AttendanceProvider.CODE_ATTENDANCE:
+        database.beginTransaction();
+        try {
+          for (ContentValues v : values) {
+            database.insert(
+                AttendanceContract.Attendance.TABLE_NAME,
+                null,
+                v
+            );
+          }
+          database.setTransactionSuccessful();
+        } finally {
+          database.endTransaction();
+        }
+        
+        break;
+      default:
+        throw new UnsupportedOperationException("Unknown uri: " + uri);
+    }
+    
+    return values.length;
+  }
+  
+  @Override
   public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
     int numberOfRowsDeleted = 0;
     
