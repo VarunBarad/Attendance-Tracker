@@ -33,7 +33,8 @@ public class AttendanceSQLiteHelper extends SQLiteOpenHelper {
         "CREATE TABLE " + AttendanceContract.Attendance.TABLE_NAME + " (" +
             AttendanceContract.Attendance.COLUMN_ATTENDANCE + " INTEGER NOT NULL, " +
             AttendanceContract.Attendance.COLUMN_DATE + " TEXT NOT NULL, " +
-            AttendanceContract.Attendance.COLUMN_SUBJECT_ID + " INTEGER REFERENCES " + AttendanceContract.Subject.TABLE_NAME + "(" + AttendanceContract.Subject.COLUMN_ID + ") ON UPDATE CASCADE ON DELETE CASCADE" +
+            AttendanceContract.Attendance.COLUMN_SUBJECT_ID + " INTEGER REFERENCES " + AttendanceContract.Subject.TABLE_NAME + "(" + AttendanceContract.Subject.COLUMN_ID + ") ON UPDATE CASCADE ON DELETE CASCADE, " +
+            "UNIQUE (" + AttendanceContract.Attendance.COLUMN_SUBJECT_ID + ", " + AttendanceContract.Attendance.COLUMN_DATE + ") ON CONFLICT REPLACE" +
             ");";
     db.execSQL(SQL_CREATE_TABLE_ATTENDANCE);
   }
