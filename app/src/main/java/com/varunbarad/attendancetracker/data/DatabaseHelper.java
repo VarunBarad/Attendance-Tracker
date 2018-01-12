@@ -185,6 +185,28 @@ public final class DatabaseHelper {
     );
   }
   
+  public static void deleteAttendance(Context context, Attendance attendance) {
+    final String SELECTION = AttendanceContract.Attendance.COLUMN_SUBJECT_ID + " = ? AND " + AttendanceContract.Attendance.COLUMN_DATE + " = ?";
+    final String[] SELECTION_ARGS = new String[]{String.valueOf(attendance.getSubjectId()), Helper.serializeDate(attendance.getClassDate())};
+    
+    context.getContentResolver().delete(
+        AttendanceContract.Attendance.CONTENT_URI,
+        SELECTION,
+        SELECTION_ARGS
+    );
+  }
+  
+  public static void deleteSubject(Context context, Subject subject) {
+    final String SELECTION = AttendanceContract.Subject.COLUMN_ID + " = ?";
+    final String[] SELECTION_ARGS = new String[]{String.valueOf(subject.getId())};
+    
+    context.getContentResolver().delete(
+        AttendanceContract.Subject.CONTENT_URI,
+        SELECTION,
+        SELECTION_ARGS
+    );
+  }
+  
   public static ContentValues toSubjectContentValues(Subject subject) {
     ContentValues subjectValues = new ContentValues();
     
