@@ -133,6 +133,34 @@ public final class DatabaseHelper {
     return DatabaseHelper.getSubjects(context, SELECTION_ARCHIVED_SUBJECTS);
   }
   
+  public static void addAttendance(Context context, Attendance attendance) {
+    context.getContentResolver().insert(
+        AttendanceContract.Attendance.CONTENT_URI,
+        DatabaseHelper.toAttendanceContentValues(attendance)
+    );
+  }
+  
+  private static void addAllAttendance(Context context, ArrayList<Attendance> attendances) {
+    ContentValues[] values = new ContentValues[attendances.size()];
+    for (int i = 0; i < values.length; i++) {
+      values[i] = DatabaseHelper.toAttendanceContentValues(attendances.get(i));
+    }
+    
+    context.getContentResolver().bulkInsert(
+        AttendanceContract.Attendance.CONTENT_URI,
+        values
+    );
+  }
+  
+  public static void addSubject(Context context, Subject subject) {
+    context.getContentResolver().insert(
+        AttendanceContract.Subject.CONTENT_URI,
+        DatabaseHelper.toSubjectContentValues(subject)
+    );
+    
+    DatabaseHelper.addAllAttendance(context, subject.getAttendances());
+  }
+  
   public static ContentValues toSubjectContentValues(Subject subject) {
     ContentValues subjectValues = new ContentValues();
     
@@ -144,10 +172,10 @@ public final class DatabaseHelper {
     return subjectValues;
   }
   
-  public static ContentValues toAttendanceContentValues(Attendance attendance, Subject subject) {
+  public static ContentValues toAttendanceContentValues(Attendance attendance) {
     ContentValues attendanceValues = new ContentValues();
     
-    attendanceValues.put(AttendanceContract.Attendance.COLUMN_SUBJECT_ID, subject.getId());
+    attendanceValues.put(AttendanceContract.Attendance.COLUMN_SUBJECT_ID, attendance.getSubjectId());
     attendanceValues.put(AttendanceContract.Attendance.COLUMN_ATTENDANCE, attendance.getAttendanceStatus());
     attendanceValues.put(AttendanceContract.Attendance.COLUMN_DATE, Helper.serializeDate(attendance.getClassDate()));
     
