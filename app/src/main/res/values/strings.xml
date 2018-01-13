@@ -42,8 +42,4 @@
 
     <string name="PREFS_KEY_THRESHOLD" translatable="false">default_threshold</string>
     <string name="PREFS_KEY_COUNT_CANCELLED" translatable="false">count_cancelled</string>
-
-
-    <string name="appwidget_text">EXAMPLE</string>
-    <string name="add_widget">Add widget</string>
 </resources>
