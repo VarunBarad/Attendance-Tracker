@@ -41,7 +41,11 @@ public class MainAttendanceActivity extends AppCompatActivity {
     this.dataBinding
         .recyclerViewAttendance
         .setLayoutManager(layoutManager);
+  }
   
+  @Override
+  protected void onStart() {
+    super.onStart();
     this.showProgress();
     this.showSubjects(DatabaseHelper.getCurrentSubjects(this));
   }
