@@ -14,6 +14,7 @@ import com.varunbarad.attendancetracker.R;
 import com.varunbarad.attendancetracker.data.DatabaseHelper;
 import com.varunbarad.attendancetracker.data.model.Subject;
 import com.varunbarad.attendancetracker.databinding.ActivitySubjectsListBinding;
+import com.varunbarad.attendancetracker.subject.addsubject.AddSubjectActivity;
 
 import java.util.ArrayList;
 
@@ -62,10 +63,14 @@ public class SubjectsListActivity extends AppCompatActivity {
         .setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
-            //ToDo: Launch add-subject screen
+            AddSubjectActivity.start(SubjectsListActivity.this);
           }
         });
+  }
   
+  @Override
+  protected void onStart() {
+    super.onStart();
     this.showSubjectsAccordingToFilter(this.dataBinding.spinnerSubjectsFilter.getSelectedItemPosition());
   }
   

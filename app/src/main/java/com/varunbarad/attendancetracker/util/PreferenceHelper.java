@@ -12,6 +12,12 @@ import com.varunbarad.attendancetracker.R;
  * Project: AttendanceTracker
  */
 public class PreferenceHelper {
+  public static int getDefaultThreshold(Context context) {
+    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+    
+    return preferences.getInt(context.getString(R.string.PREFS_KEY_THRESHOLD), 0);
+  }
+  
   public static boolean countCancelledAsSkipped(Context context) {
     SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
     

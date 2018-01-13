@@ -153,9 +153,11 @@ public final class DatabaseHelper {
   }
   
   public static void addSubject(Context context, Subject subject) {
+    ContentValues values = DatabaseHelper.toSubjectContentValues(subject);
+    values.remove(AttendanceContract.Subject.COLUMN_ID);
     context.getContentResolver().insert(
         AttendanceContract.Subject.CONTENT_URI,
-        DatabaseHelper.toSubjectContentValues(subject)
+        values
     );
     
     DatabaseHelper.addAllAttendance(context, subject.getAttendances());
