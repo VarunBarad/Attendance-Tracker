@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.varunbarad.attendancetracker.data.model.Subject;
 import com.varunbarad.attendancetracker.databinding.ListItemSubjectBinding;
+import com.varunbarad.attendancetracker.subject.subjectdetails.SubjectDetailsActivity;
 
 import java.util.ArrayList;
 
@@ -75,6 +76,7 @@ public class SubjectsAdapter extends RecyclerView.Adapter<SubjectsAdapter.ViewHo
     @Override
     public void onClick(View view) {
       //ToDo: Handle click on subject
+      SubjectDetailsActivity.start(context, subjects.get(getAdapterPosition()).getId());
     }
   }
 }
