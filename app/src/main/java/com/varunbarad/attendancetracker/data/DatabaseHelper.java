@@ -133,6 +133,38 @@ public final class DatabaseHelper {
     return DatabaseHelper.getSubjects(context, SELECTION_ARCHIVED_SUBJECTS);
   }
   
+  public static Subject getSingleSubject(Context context, long subjectId) {
+    final String SELECTION = AttendanceContract.Subject.COLUMN_ID + " = ?";
+    final String[] SELECTION_ARGS = new String[]{String.valueOf(subjectId)};
+    
+    Cursor cursor = context.getContentResolver().query(
+        AttendanceContract.Subject.CONTENT_URI,
+        null,
+        SELECTION,
+        SELECTION_ARGS,
+        null
+    );
+    
+    Subject subject;
+    if (cursor != null) {
+      if (cursor.getCount() < 1) {
+        subject = null;
+      } else {
+        cursor.moveToFirst();
+        subject = DatabaseHelper.readOneSubject(cursor);
+        
+        ArrayList<Attendance> attendances = DatabaseHelper.getAttendance(context, subjectId);
+        subject.setAttendances(attendances);
+      }
+      
+      cursor.close();
+    } else {
+      subject = null;
+    }
+    
+    return subject;
+  }
+  
   public static void addAttendance(Context context, Attendance attendance) {
     context.getContentResolver().insert(
         AttendanceContract.Attendance.CONTENT_URI,
