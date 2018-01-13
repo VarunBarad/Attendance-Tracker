@@ -14,6 +14,7 @@ import com.varunbarad.attendancetracker.R;
 import com.varunbarad.attendancetracker.data.DatabaseHelper;
 import com.varunbarad.attendancetracker.data.model.Subject;
 import com.varunbarad.attendancetracker.databinding.ActivityMainAttendanceBinding;
+import com.varunbarad.attendancetracker.settings.SettingsActivity;
 import com.varunbarad.attendancetracker.subject.listsubjects.SubjectsListActivity;
 
 import java.util.ArrayList;
@@ -61,7 +62,7 @@ public class MainAttendanceActivity extends AppCompatActivity {
         SubjectsListActivity.start(this);
         break;
       case R.id.action_settings:
-        //ToDo: Show settings screen
+        SettingsActivity.start(this);
         break;
       case R.id.action_about:
         //ToDo: Show about-us screen
