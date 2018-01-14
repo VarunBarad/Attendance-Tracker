@@ -36,4 +36,8 @@ public final class Helper {
   public static Date stripTime(Date date) {
     return new Date(date.getYear(), date.getMonth(), date.getDate(), 0, 0, 0);
   }
+  
+  public static boolean isDateInFuture(Date d1, Date d2) {
+    return d1.getTime() > d2.getTime();
+  }
 }

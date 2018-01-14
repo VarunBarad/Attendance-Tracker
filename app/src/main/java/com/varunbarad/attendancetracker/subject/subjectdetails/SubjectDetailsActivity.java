@@ -5,11 +5,14 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.stacktips.view.CalendarListener;
 import com.stacktips.view.DayDecorator;
 import com.varunbarad.attendancetracker.R;
 import com.varunbarad.attendancetracker.data.DatabaseHelper;
@@ -17,6 +20,7 @@ import com.varunbarad.attendancetracker.data.model.Attendance;
 import com.varunbarad.attendancetracker.data.model.Subject;
 import com.varunbarad.attendancetracker.databinding.ActivitySubjectDetailsBinding;
 import com.varunbarad.attendancetracker.subject.editsubject.EditSubjectActivity;
+import com.varunbarad.attendancetracker.util.Helper;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -99,6 +103,30 @@ public class SubjectDetailsActivity extends AppCompatActivity {
           .calendar
           .refreshCalendar(Calendar.getInstance(Locale.getDefault()));
     }
+  
+    this.dataBinding
+        .calendar
+        .setCalendarListener(new CalendarListener() {
+          @Override
+          public void onDateSelected(Date date) {
+            if (Helper.isDateInFuture(Helper.stripTime(date), Helper.stripTime(new Date()))) {
+              Snackbar
+                  .make(
+                      SubjectDetailsActivity.this.dataBinding.getRoot(),
+                      R.string.message_future_date,
+                      Snackbar.LENGTH_SHORT
+                  ).show();
+            } else {
+              //ToDo: Present a dialog to select attendance status
+              Toast.makeText(SubjectDetailsActivity.this, "Dialog", Toast.LENGTH_SHORT).show();
+            }
+          }
+        
+          @Override
+          public void onMonthChanged(Date date) {
+          
+          }
+        });
   }
   
   @Override
