@@ -16,6 +16,7 @@ import com.varunbarad.attendancetracker.data.DatabaseHelper;
 import com.varunbarad.attendancetracker.data.model.Attendance;
 import com.varunbarad.attendancetracker.data.model.Subject;
 import com.varunbarad.attendancetracker.databinding.ActivitySubjectDetailsBinding;
+import com.varunbarad.attendancetracker.subject.editsubject.EditSubjectActivity;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -121,7 +122,7 @@ public class SubjectDetailsActivity extends AppCompatActivity {
     if (id == android.R.id.home) {
       this.onBackPressed();
     } else if (id == R.id.action_edit) {
-      //ToDo: Launch subject-edit screen
+      EditSubjectActivity.start(this, this.subject.getId());
     } else if (id == R.id.action_archive) {
       this.toggleArchive();
     } else {
