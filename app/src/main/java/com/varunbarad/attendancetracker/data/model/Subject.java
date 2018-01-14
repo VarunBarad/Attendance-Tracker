@@ -109,6 +109,20 @@ public final class Subject {
   }
   
   public void addAttendance(Attendance attendance) {
-    this.attendances.add(attendance);
+    int length = this.attendances.size();
+    boolean attendanceExists = false;
+    for (int i = 0; i < length; i++) {
+      if (this.attendances.get(i).getClassDate().equals(attendance.getClassDate())) {
+        attendanceExists = true;
+        this
+            .attendances
+            .set(i, attendance);
+        break;
+      }
+    }
+  
+    if (!attendanceExists) {
+      this.attendances.add(attendance);
+    }
   }
 }
