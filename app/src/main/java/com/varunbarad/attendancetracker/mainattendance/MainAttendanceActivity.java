@@ -17,6 +17,7 @@ import com.varunbarad.attendancetracker.data.model.Subject;
 import com.varunbarad.attendancetracker.databinding.ActivityMainAttendanceBinding;
 import com.varunbarad.attendancetracker.settings.SettingsActivity;
 import com.varunbarad.attendancetracker.subject.listsubjects.SubjectsListActivity;
+import com.varunbarad.attendancetracker.util.Helper;
 import com.varunbarad.attendancetracker.util.eventlistener.ListItemClickListener;
 
 import java.util.ArrayList;
@@ -140,8 +141,8 @@ public class MainAttendanceActivity extends AppCompatActivity implements ListIte
   public void onListItemClicked(int position, String data) {
     int attendanceStatus = Integer.parseInt(data);
     Subject subject = this.subjectsAdapter.getSubjects().get(position);
-    
-    Attendance attendance = new Attendance(subject.getId(), new Date(), attendanceStatus);
+  
+    Attendance attendance = new Attendance(subject.getId(), Helper.stripTime(new Date()), attendanceStatus);
     subject.addAttendance(attendance);
     
     this.subjectsAdapter.updateSubject(subject);

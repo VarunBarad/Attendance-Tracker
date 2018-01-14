@@ -39,4 +39,11 @@ public final class Helper {
     
     return (d1.getYear() == d2.getYear()) && (d1.getMonth() == d2.getMonth()) && (d1.getDate() == d2.getDate());
   }
+  
+  public static Date stripTime(Date date) {
+    date.setHours(0);
+    date.setMinutes(0);
+    date.setSeconds(0);
+    return date;
+  }
 }
