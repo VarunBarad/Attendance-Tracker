@@ -7,10 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.varunbarad.attendancetracker.R;
+import com.varunbarad.attendancetracker.data.model.Attendance;
 import com.varunbarad.attendancetracker.data.model.Subject;
 import com.varunbarad.attendancetracker.databinding.ListItemAttendanceBinding;
 import com.varunbarad.attendancetracker.util.Helper;
 import com.varunbarad.attendancetracker.util.PreferenceHelper;
+import com.varunbarad.attendancetracker.util.eventlistener.ListItemClickListener;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -20,13 +22,28 @@ import java.util.Locale;
  * Date: 04-01-2018
  * Project: AttendanceTracker
  */
-public class AttendanceSubjectAdapter extends RecyclerView.Adapter<AttendanceSubjectAdapter.ViewHolder> {
+public class AttendanceSubjectAdapter extends RecyclerView.Adapter<AttendanceSubjectAdapter.ViewHolder> implements ListItemClickListener {
   private ArrayList<Subject> subjects;
-  private Context context;
+  private ListItemClickListener listItemClickListener;
   
-  public AttendanceSubjectAdapter(ArrayList<Subject> subjects, Context context) {
+  public AttendanceSubjectAdapter(ArrayList<Subject> subjects, ListItemClickListener listItemClickListener) {
     this.subjects = subjects;
-    this.context = context;
+    this.listItemClickListener = listItemClickListener;
+  }
+  
+  void updateSubject(Subject subject) {
+    int length = this.subjects.size();
+    for (int i = 0; i < length; i++) {
+      if (this.subjects.get(i).getId() == subject.getId()) {
+        this.subjects.set(i, subject);
+        this.notifyItemChanged(i);
+        break;
+      }
+    }
+  }
+  
+  ArrayList<Subject> getSubjects() {
+    return this.subjects;
   }
   
   void setSubjects(ArrayList<Subject> subjects) {
@@ -55,6 +72,13 @@ public class AttendanceSubjectAdapter extends RecyclerView.Adapter<AttendanceSub
     } else {
       return 0;
     }
+  }
+  
+  @Override
+  public void onListItemClicked(int position, String data) {
+    this
+        .listItemClickListener
+        .onListItemClicked(position, data);
   }
   
   public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -136,11 +160,11 @@ public class AttendanceSubjectAdapter extends RecyclerView.Adapter<AttendanceSub
       int id = view.getId();
       
       if (id == this.itemBinding.buttonAttend.getId()) {
-        //ToDo: Attend button pressed
+        onListItemClicked(this.getAdapterPosition(), String.valueOf(Attendance.ATTEND));
       } else if (id == this.itemBinding.buttonSkip.getId()) {
-        //ToDo: Skip button pressed
+        onListItemClicked(this.getAdapterPosition(), String.valueOf(Attendance.SKIP));
       } else if (id == this.itemBinding.buttonCancel.getId()) {
-        //ToDo: Cancel button pressed
+        onListItemClicked(this.getAdapterPosition(), String.valueOf(Attendance.CANCEL));
       }
     }
   }

@@ -12,14 +12,17 @@ import android.view.View;
 
 import com.varunbarad.attendancetracker.R;
 import com.varunbarad.attendancetracker.data.DatabaseHelper;
+import com.varunbarad.attendancetracker.data.model.Attendance;
 import com.varunbarad.attendancetracker.data.model.Subject;
 import com.varunbarad.attendancetracker.databinding.ActivityMainAttendanceBinding;
 import com.varunbarad.attendancetracker.settings.SettingsActivity;
 import com.varunbarad.attendancetracker.subject.listsubjects.SubjectsListActivity;
+import com.varunbarad.attendancetracker.util.eventlistener.ListItemClickListener;
 
 import java.util.ArrayList;
+import java.util.Date;
 
-public class MainAttendanceActivity extends AppCompatActivity {
+public class MainAttendanceActivity extends AppCompatActivity implements ListItemClickListener {
   private ActivityMainAttendanceBinding dataBinding;
   private AttendanceSubjectAdapter subjectsAdapter;
   
@@ -131,5 +134,18 @@ public class MainAttendanceActivity extends AppCompatActivity {
     this.dataBinding
         .containerPlaceholder
         .setVisibility(View.VISIBLE);
+  }
+  
+  @Override
+  public void onListItemClicked(int position, String data) {
+    int attendanceStatus = Integer.parseInt(data);
+    Subject subject = this.subjectsAdapter.getSubjects().get(position);
+    
+    Attendance attendance = new Attendance(subject.getId(), new Date(), attendanceStatus);
+    subject.addAttendance(attendance);
+    
+    this.subjectsAdapter.updateSubject(subject);
+    
+    DatabaseHelper.addAttendance(this, attendance);
   }
 }
