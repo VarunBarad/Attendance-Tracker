@@ -33,17 +33,7 @@ public final class Helper {
     }
   }
   
-  public static boolean isSameDay(Date d1, Date d2) {
-    assert d1 != null;
-    assert d2 != null;
-    
-    return (d1.getYear() == d2.getYear()) && (d1.getMonth() == d2.getMonth()) && (d1.getDate() == d2.getDate());
-  }
-  
   public static Date stripTime(Date date) {
-    date.setHours(0);
-    date.setMinutes(0);
-    date.setSeconds(0);
-    return date;
+    return new Date(date.getYear(), date.getMonth(), date.getDate(), 0, 0, 0);
   }
 }

@@ -31,8 +31,9 @@ public class CalendarDayDecorator implements DayDecorator {
   
   @Override
   public void decorate(DayView dayView) {
+    Date date = Helper.stripTime(dayView.getDate());
     for (Date d : dates) {
-      if (Helper.isSameDay(d, dayView.getDate())) {
+      if (d.equals(date)) {
         dayView.setBackgroundColor(ContextCompat.getColor(context, this.colorResourceId));
         dayView.setTextColor(ContextCompat.getColor(context, R.color.colorText));
         break;
