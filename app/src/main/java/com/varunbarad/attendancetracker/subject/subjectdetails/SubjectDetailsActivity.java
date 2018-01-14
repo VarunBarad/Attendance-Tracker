@@ -67,7 +67,7 @@ public class SubjectDetailsActivity extends AppCompatActivity {
               Snackbar
                   .make(
                       SubjectDetailsActivity.this.dataBinding.getRoot(),
-                      R.string.message_future_date,
+                      R.string.message_futureDate,
                       Snackbar.LENGTH_SHORT
                   ).show();
             } else {

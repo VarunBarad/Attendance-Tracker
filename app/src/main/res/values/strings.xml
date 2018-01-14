@@ -40,7 +40,7 @@
     <string name="message_widget_lagging">Classes you are lagging in: %1$d</string>
     <string name="message_attendance_noCurrentSubjects">There appears to be no current subjects available.\nTry to add a subject from the menu.</string>
     <string name="message_attendance_noSubjectsForCurrentFilter">There appears to be no subjects for the applied filter.\nTry adding a new subject.</string>
-    <string name="message_future_date">You cannot set/edit a future date\'s attendance.</string>
+    <string name="message_futureDate">You cannot set/edit a future date\'s attendance.</string>
     <string name="message_setEditAttendance">Set attendance for %1$s</string>
 
     <string name="PREFS_KEY_THRESHOLD" translatable="false">default_threshold</string>
