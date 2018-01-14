@@ -22,7 +22,7 @@ public final class DatabaseHelper {
   private static Subject readOneSubject(Cursor cursor) {
     long id = cursor.getLong(cursor.getColumnIndex(AttendanceContract.Subject.COLUMN_ID));
     String name = cursor.getString(cursor.getColumnIndex(AttendanceContract.Subject.COLUMN_NAME));
-    double threshold = cursor.getDouble(cursor.getColumnIndex(AttendanceContract.Subject.COLUMN_THRESHOLD));
+    int threshold = cursor.getInt(cursor.getColumnIndex(AttendanceContract.Subject.COLUMN_THRESHOLD));
     boolean isArchived = (cursor.getInt(cursor.getColumnIndex(AttendanceContract.Subject.COLUMN_ARCHIVED)) == 1);
     
     return new Subject(id, name, threshold, isArchived, null);

@@ -13,11 +13,11 @@ import java.util.Locale;
 public final class Helper {
   public static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.ENGLISH);
   
-  public static int calculateNumberOfClassesToAttend(int attended, int skipped, double threshold) {
-    double numerator = (((double) attended) * (threshold - 1.0d)) + (((double) skipped) * threshold);
-    double denominator = 1.0d - threshold;
+  public static int calculateNumberOfClassesToAttend(int attended, int skipped, int threshold) {
+    int numerator = (attended * (threshold - 100)) + (skipped * threshold);
+    int denominator = 100 - threshold;
     
-    return Double.valueOf(Math.ceil(numerator / denominator)).intValue();
+    return (numerator / denominator);
   }
   
   public static String serializeDate(Date date) {

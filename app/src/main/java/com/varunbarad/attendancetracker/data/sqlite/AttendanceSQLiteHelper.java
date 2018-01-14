@@ -24,7 +24,7 @@ public class AttendanceSQLiteHelper extends SQLiteOpenHelper {
         "CREATE TABLE " + AttendanceContract.Subject.TABLE_NAME + " (" +
             AttendanceContract.Subject.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             AttendanceContract.Subject.COLUMN_NAME + " TEXT NOT NULL, " +
-            AttendanceContract.Subject.COLUMN_THRESHOLD + " REAL NOT NULL, " +
+            AttendanceContract.Subject.COLUMN_THRESHOLD + " INTEGER NOT NULL, " +
             AttendanceContract.Subject.COLUMN_ARCHIVED + " INTEGER DEFAULT 0" +
             ");";
     db.execSQL(SQL_CREATE_TABLE_SUBJECT);

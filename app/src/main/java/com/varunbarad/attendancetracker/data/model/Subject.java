@@ -10,11 +10,11 @@ import java.util.ArrayList;
 public final class Subject {
   private long id;
   private String name;
-  private double threshold;
+  private int threshold;
   private boolean archived;
   private ArrayList<Attendance> attendances;
   
-  public Subject(long id, String name, double threshold, boolean archived, ArrayList<Attendance> attendances) {
+  public Subject(long id, String name, int threshold, boolean archived, ArrayList<Attendance> attendances) {
     this.id = id;
     this.name = name;
     this.threshold = threshold;
@@ -26,15 +26,15 @@ public final class Subject {
     }
   }
   
-  public Subject(String name, double threshold, boolean archived, ArrayList<Attendance> attendances) {
+  public Subject(String name, int threshold, boolean archived, ArrayList<Attendance> attendances) {
     this(-1, name, threshold, archived, attendances);
   }
   
-  public Subject(String name, double threshold, ArrayList<Attendance> attendances) {
+  public Subject(String name, int threshold, ArrayList<Attendance> attendances) {
     this(name, threshold, false, attendances);
   }
   
-  public Subject(String name, double threshold) {
+  public Subject(String name, int threshold) {
     this(name, threshold, null);
   }
   
@@ -54,11 +54,11 @@ public final class Subject {
     this.name = name;
   }
   
-  public double getThreshold() {
+  public int getThreshold() {
     return threshold;
   }
   
-  public void setThreshold(double threshold) {
+  public void setThreshold(int threshold) {
     this.threshold = threshold;
   }
   

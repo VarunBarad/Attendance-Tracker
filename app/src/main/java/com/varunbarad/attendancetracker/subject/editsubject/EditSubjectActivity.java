@@ -53,11 +53,11 @@ public class EditSubjectActivity extends AppCompatActivity implements View.OnCli
     
     this.dataBinding
         .seekBarThreshold
-        .setProgress((int) this.subject.getThreshold());
+        .setProgress(this.subject.getThreshold());
     
     this.dataBinding
         .textViewThreshold
-        .setText(String.format(Locale.getDefault(), "%d%%", (int) this.subject.getThreshold()));
+        .setText(String.format(Locale.getDefault(), "%d%%", this.subject.getThreshold()));
     
     this.dataBinding
         .seekBarThreshold
@@ -144,7 +144,7 @@ public class EditSubjectActivity extends AppCompatActivity implements View.OnCli
   
   private void commitChangesToDatabase() {
     String subjectName = this.dataBinding.textInputSubjectName.getText().toString().trim();
-    double threshold = ((double) this.dataBinding.seekBarThreshold.getProgress()) / 100.0d;
+    int threshold = this.dataBinding.seekBarThreshold.getProgress();
     
     this.subject
         .setName(subjectName);

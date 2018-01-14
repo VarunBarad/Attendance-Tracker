@@ -136,7 +136,7 @@ public class AddSubjectActivity extends AppCompatActivity implements View.OnClic
   
   private void addSubjectToDatabase() {
     String subjectName = this.dataBinding.textInputSubjectName.getText().toString().trim();
-    double threshold = ((double) this.dataBinding.seekBarThreshold.getProgress()) / 100.0d;
+    int threshold = this.dataBinding.seekBarThreshold.getProgress();
     
     Subject subject = new Subject(subjectName, threshold, false, null);
     DatabaseHelper.addSubject(this, subject);

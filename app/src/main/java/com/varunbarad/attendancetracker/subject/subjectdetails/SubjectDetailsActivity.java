@@ -57,7 +57,7 @@ public class SubjectDetailsActivity extends AppCompatActivity {
     //ToDo: Extract this format to strings.xml
     this.dataBinding
         .valueThreshold
-        .setText(String.format(Locale.getDefault(), "%.0f%% Required", this.subject.getThreshold()));
+        .setText(String.format(Locale.getDefault(), "%d%% Required", this.subject.getThreshold()));
     
     this.dataBinding
         .valueAttended

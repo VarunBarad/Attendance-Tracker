@@ -91,7 +91,7 @@ public class AttendanceSubjectAdapter extends RecyclerView.Adapter<AttendanceSub
       
       this.itemBinding
           .threshold
-          .setText(String.format(Locale.getDefault(), "%.0f%% Required", subject.getThreshold()));
+          .setText(String.format(Locale.getDefault(), "%d%% Required", subject.getThreshold()));
       
       this.itemBinding
           .textViewAttend
