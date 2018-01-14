@@ -10,12 +10,15 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.SeekBar;
 
 import com.varunbarad.attendancetracker.R;
 import com.varunbarad.attendancetracker.data.DatabaseHelper;
 import com.varunbarad.attendancetracker.data.model.Subject;
 import com.varunbarad.attendancetracker.databinding.ActivityAddSubjectBinding;
 import com.varunbarad.attendancetracker.util.PreferenceHelper;
+
+import java.util.Locale;
 
 public class AddSubjectActivity extends AppCompatActivity implements View.OnClickListener {
   private ActivityAddSubjectBinding dataBinding;
@@ -40,6 +43,33 @@ public class AddSubjectActivity extends AppCompatActivity implements View.OnClic
     this.dataBinding
         .seekBarThreshold
         .setProgress(PreferenceHelper.getDefaultThreshold(this));
+  
+    this.dataBinding
+        .textViewThreshold
+        .setText(String.format(Locale.getDefault(), "%d%%", PreferenceHelper.getDefaultThreshold(this)));
+  
+    this.dataBinding
+        .seekBarThreshold
+        .setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+          @Override
+          public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            AddSubjectActivity
+                .this
+                .dataBinding
+                .textViewThreshold
+                .setText(String.format(Locale.getDefault(), "%d%%", progress));
+          }
+        
+          @Override
+          public void onStartTrackingTouch(SeekBar seekBar) {
+          
+          }
+        
+          @Override
+          public void onStopTrackingTouch(SeekBar seekBar) {
+          
+          }
+        });
   
     this.dataBinding
         .buttonClear
