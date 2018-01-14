@@ -1,6 +1,5 @@
 package com.varunbarad.attendancetracker.subject.listsubjects;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +7,7 @@ import android.view.ViewGroup;
 
 import com.varunbarad.attendancetracker.data.model.Subject;
 import com.varunbarad.attendancetracker.databinding.ListItemSubjectBinding;
-import com.varunbarad.attendancetracker.subject.subjectdetails.SubjectDetailsActivity;
+import com.varunbarad.attendancetracker.util.eventlistener.ListItemClickListener;
 
 import java.util.ArrayList;
 
@@ -17,13 +16,17 @@ import java.util.ArrayList;
  * Date: 05-01-2018
  * Project: AttendanceTracker
  */
-public class SubjectsAdapter extends RecyclerView.Adapter<SubjectsAdapter.ViewHolder> {
-  private Context context;
+public class SubjectsAdapter extends RecyclerView.Adapter<SubjectsAdapter.ViewHolder> implements ListItemClickListener {
   private ArrayList<Subject> subjects;
+  private ListItemClickListener listItemClickListener;
   
-  public SubjectsAdapter(Context context, ArrayList<Subject> subjects) {
-    this.context = context;
+  public SubjectsAdapter(ArrayList<Subject> subjects, ListItemClickListener listItemClickListener) {
     this.subjects = subjects;
+    this.listItemClickListener = listItemClickListener;
+  }
+  
+  public ArrayList<Subject> getSubjects() {
+    return this.subjects;
   }
   
   public void setSubjects(ArrayList<Subject> subjects) {
@@ -54,6 +57,11 @@ public class SubjectsAdapter extends RecyclerView.Adapter<SubjectsAdapter.ViewHo
     }
   }
   
+  @Override
+  public void onListItemClicked(int position, String data) {
+    this.listItemClickListener.onListItemClicked(position, data);
+  }
+  
   public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     private ListItemSubjectBinding itemBinding;
     
@@ -75,8 +83,7 @@ public class SubjectsAdapter extends RecyclerView.Adapter<SubjectsAdapter.ViewHo
     
     @Override
     public void onClick(View view) {
-      //ToDo: Handle click on subject
-      SubjectDetailsActivity.start(context, subjects.get(getAdapterPosition()).getId());
+      onListItemClicked(this.getAdapterPosition(), null);
     }
   }
 }

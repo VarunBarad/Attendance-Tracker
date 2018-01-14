@@ -15,10 +15,12 @@ import com.varunbarad.attendancetracker.data.DatabaseHelper;
 import com.varunbarad.attendancetracker.data.model.Subject;
 import com.varunbarad.attendancetracker.databinding.ActivitySubjectsListBinding;
 import com.varunbarad.attendancetracker.subject.addsubject.AddSubjectActivity;
+import com.varunbarad.attendancetracker.subject.subjectdetails.SubjectDetailsActivity;
+import com.varunbarad.attendancetracker.util.eventlistener.ListItemClickListener;
 
 import java.util.ArrayList;
 
-public class SubjectsListActivity extends AppCompatActivity {
+public class SubjectsListActivity extends AppCompatActivity implements ListItemClickListener {
   private ActivitySubjectsListBinding dataBinding;
   private SubjectsAdapter subjectsAdapter;
   private String currentFilter;
@@ -123,7 +125,7 @@ public class SubjectsListActivity extends AppCompatActivity {
       if (this.subjectsAdapter != null) {
         this.subjectsAdapter.setSubjects(subjects);
       } else {
-        this.subjectsAdapter = new SubjectsAdapter(this, subjects);
+        this.subjectsAdapter = new SubjectsAdapter(subjects, this);
         this.dataBinding
             .recyclerViewSubjects
             .setAdapter(this.subjectsAdapter);
@@ -155,5 +157,14 @@ public class SubjectsListActivity extends AppCompatActivity {
     this.dataBinding
         .containerPlaceholder
         .setVisibility(View.VISIBLE);
+  }
+  
+  @Override
+  public void onListItemClicked(int position, String data) {
+    SubjectDetailsActivity
+        .start(
+            this,
+            this.subjectsAdapter.getSubjects().get(position).getId()
+        );
   }
 }
