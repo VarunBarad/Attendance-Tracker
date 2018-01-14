@@ -6,6 +6,7 @@ import android.support.v4.content.ContextCompat;
 
 import com.stacktips.view.DayDecorator;
 import com.stacktips.view.DayView;
+import com.varunbarad.attendancetracker.R;
 import com.varunbarad.attendancetracker.util.Helper;
 
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ public class CalendarDayDecorator implements DayDecorator {
     for (Date d : dates) {
       if (Helper.isSameDay(d, dayView.getDate())) {
         dayView.setBackgroundColor(ContextCompat.getColor(context, this.colorResourceId));
+        dayView.setTextColor(ContextCompat.getColor(context, R.color.colorText));
         break;
       }
     }
