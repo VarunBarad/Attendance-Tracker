@@ -1,6 +1,9 @@
 package com.varunbarad.attendancetracker.data.model;
 
+import com.varunbarad.attendancetracker.util.Helper;
+
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Creator: Varun Barad
@@ -124,5 +127,15 @@ public final class Subject {
     if (!attendanceExists) {
       this.attendances.add(attendance);
     }
+  }
+  
+  public Attendance getAttendanceOnDate(Date date) {
+    date = Helper.stripTime(date);
+    for (Attendance a : this.attendances) {
+      if (a.getClassDate().equals(date)) {
+        return a;
+      }
+    }
+    return null;
   }
 }

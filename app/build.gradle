@@ -28,6 +28,7 @@ ext {
     supportLibraryVersion = '26.1.0'
     constraintLayoutVersion = '1.0.2'
     calendarViewLibraryVersion = 'v1.1'
+    materialDialogsVersion = '0.9.6.0'
 
     jUnitVersion = '4.12'
     androidTestRunnerVersion = '1.0.1'
@@ -47,6 +48,9 @@ dependencies {
 
     // Calendar View
     implementation "com.github.npanigrahy:Custom-Calendar-View:${calendarViewLibraryVersion}"
+
+    // Material Dialogs
+    implementation "com.afollestad.material-dialogs:core:${materialDialogsVersion}"
 
     // JUnit Test Runner
     testImplementation "junit:junit:${jUnitVersion}"

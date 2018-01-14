@@ -12,6 +12,7 @@ import java.util.Locale;
  */
 public final class Helper {
   public static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.ENGLISH);
+  public static final SimpleDateFormat dateFormatUserFriendly = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
   
   public static int calculateNumberOfClassesToAttend(int attended, int skipped, int threshold) {
     int numerator = (attended * (threshold - 100)) + (skipped * threshold);
@@ -39,5 +40,9 @@ public final class Helper {
   
   public static boolean isDateInFuture(Date d1, Date d2) {
     return d1.getTime() > d2.getTime();
+  }
+  
+  public static String formatDateForUser(Date date) {
+    return dateFormatUserFriendly.format(date);
   }
 }

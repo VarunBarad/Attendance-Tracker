@@ -18,6 +18,7 @@
     <string name="label_subjects">Subjects</string>
     <string name="label_settings">Settings</string>
     <string name="label_aboutUs">About Us</string>
+    <string name="label_setAttendance">Set Attendance</string>
 
     <string name="hint_subjectName">Enter subject name</string>
 
@@ -40,6 +41,7 @@
     <string name="message_attendance_noCurrentSubjects">There appears to be no current subjects available.\nTry to add a subject from the menu.</string>
     <string name="message_attendance_noSubjectsForCurrentFilter">There appears to be no subjects for the applied filter.\nTry adding a new subject.</string>
     <string name="message_future_date">You cannot set/edit a future date\'s attendance.</string>
+    <string name="message_setEditAttendance">Set attendance for %1$s</string>
 
     <string name="PREFS_KEY_THRESHOLD" translatable="false">default_threshold</string>
     <string name="PREFS_KEY_COUNT_CANCELLED" translatable="false">count_cancelled</string>

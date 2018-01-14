@@ -10,8 +10,9 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.stacktips.view.CalendarListener;
 import com.stacktips.view.DayDecorator;
 import com.varunbarad.attendancetracker.R;
@@ -23,6 +24,7 @@ import com.varunbarad.attendancetracker.subject.editsubject.EditSubjectActivity;
 import com.varunbarad.attendancetracker.util.Helper;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -53,56 +55,8 @@ public class SubjectDetailsActivity extends AppCompatActivity {
   @Override
   protected void onStart() {
     super.onStart();
-    this.subject = DatabaseHelper.getSingleSubject(this, this.getSubjectIdPassedToActivity());
-    
-    this.getSupportActionBar()
-        .setTitle(this.subject.getName());
-    
-    //ToDo: Extract this format to strings.xml
-    this.dataBinding
-        .valueThreshold
-        .setText(String.format(Locale.getDefault(), "%d%% Required", this.subject.getThreshold()));
-    
-    this.dataBinding
-        .valueAttended
-        .setText(String.valueOf(this.subject.getAttended().size()));
-    
-    this.dataBinding
-        .valueSkipped
-        .setText(String.valueOf(this.subject.getSkipped().size()));
-    
-    this.dataBinding
-        .valueCancelled
-        .setText(String.valueOf(this.subject.getCancelled().size()));
-    
-    {
-      ArrayList<Attendance> attended = this.subject.getAttended();
-      ArrayList<Date> attendedDates = new ArrayList<>(attended.size());
-      for (Attendance a : attended) {
-        attendedDates.add(a.getClassDate());
-      }
-      ArrayList<Attendance> skipped = this.subject.getSkipped();
-      ArrayList<Date> skippedDates = new ArrayList<>(skipped.size());
-      for (Attendance a : skipped) {
-        skippedDates.add(a.getClassDate());
-      }
-      ArrayList<Attendance> cancelled = this.subject.getCancelled();
-      ArrayList<Date> cancelledDates = new ArrayList<>(cancelled.size());
-      for (Attendance a : cancelled) {
-        cancelledDates.add(a.getClassDate());
-      }
-      List<DayDecorator> dayDecorators = new ArrayList<>(3);
-      dayDecorators.add(new CalendarDayDecorator(this, attendedDates, R.color.colorAttend));
-      dayDecorators.add(new CalendarDayDecorator(this, skippedDates, R.color.colorSkip));
-      dayDecorators.add(new CalendarDayDecorator(this, cancelledDates, R.color.colorCancel));
-      
-      this.dataBinding
-          .calendar
-          .setDecorators(dayDecorators);
-      this.dataBinding
-          .calendar
-          .refreshCalendar(Calendar.getInstance(Locale.getDefault()));
-    }
+  
+    this.refreshData();
   
     this.dataBinding
         .calendar
@@ -117,8 +71,9 @@ public class SubjectDetailsActivity extends AppCompatActivity {
                       Snackbar.LENGTH_SHORT
                   ).show();
             } else {
-              //ToDo: Present a dialog to select attendance status
-              Toast.makeText(SubjectDetailsActivity.this, "Dialog", Toast.LENGTH_SHORT).show();
+              SubjectDetailsActivity
+                  .this
+                  .showSetEditAttendanceDialogForDate(date);
             }
           }
         
@@ -127,6 +82,57 @@ public class SubjectDetailsActivity extends AppCompatActivity {
           
           }
         });
+  }
+  
+  private void showSetEditAttendanceDialogForDate(final Date date) {
+    final Context context = this;
+    String[] attendanceLabels = new String[]{
+        context.getString(R.string.label_attend),
+        context.getString(R.string.label_skip),
+        context.getString(R.string.label_cancel)
+    };
+    final int[] attendanceValues = new int[]{
+        Attendance.ATTEND,
+        Attendance.SKIP,
+        Attendance.CANCEL
+    };
+    
+    Attendance existingAttendance = SubjectDetailsActivity.this.subject.getAttendanceOnDate(date);
+    
+    int existingIndex = -1;
+    if (existingAttendance != null) {
+      int existingStatus = existingAttendance.getAttendanceStatus();
+      for (int i = 0; i < attendanceValues.length; i++) {
+        if (attendanceValues[i] == existingStatus) {
+          existingIndex = i;
+          break;
+        }
+      }
+    }
+    MaterialDialog attendanceDialog = new MaterialDialog.Builder(SubjectDetailsActivity.this)
+        .title(R.string.label_setAttendance)
+        .content(R.string.message_setEditAttendance, Helper.formatDateForUser(date))
+        .items(Arrays.asList(attendanceLabels))
+        .itemsCallbackSingleChoice(existingIndex, new MaterialDialog.ListCallbackSingleChoice() {
+          @Override
+          public boolean onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+            Attendance newAttendance = new Attendance(
+                SubjectDetailsActivity.this.subject.getId(),
+                Helper.stripTime(date),
+                attendanceValues[position]
+            );
+            DatabaseHelper.addAttendance(context, newAttendance);
+            
+            SubjectDetailsActivity
+                .this
+                .refreshData();
+            
+            return true;
+          }
+        })
+        .build();
+    
+    attendanceDialog.show();
   }
   
   @Override
@@ -178,5 +184,59 @@ public class SubjectDetailsActivity extends AppCompatActivity {
     
     this.menu.findItem(R.id.action_archive).setIcon(iconDrawable);
     DatabaseHelper.editSubject(this, this.subject);
+  }
+  
+  private void refreshData() {
+    this.subject = DatabaseHelper.getSingleSubject(this, this.getSubjectIdPassedToActivity());
+    
+    this.getSupportActionBar()
+        .setTitle(this.subject.getName());
+    
+    //ToDo: Extract this format to strings.xml
+    this.dataBinding
+        .valueThreshold
+        .setText(String.format(Locale.getDefault(), "%d%% Required", this.subject.getThreshold()));
+    
+    this.dataBinding
+        .valueAttended
+        .setText(String.valueOf(this.subject.getAttended().size()));
+    
+    this.dataBinding
+        .valueSkipped
+        .setText(String.valueOf(this.subject.getSkipped().size()));
+    
+    this.dataBinding
+        .valueCancelled
+        .setText(String.valueOf(this.subject.getCancelled().size()));
+    
+    {
+      ArrayList<Attendance> attended = this.subject.getAttended();
+      ArrayList<Date> attendedDates = new ArrayList<>(attended.size());
+      for (Attendance a : attended) {
+        attendedDates.add(a.getClassDate());
+      }
+      ArrayList<Attendance> skipped = this.subject.getSkipped();
+      ArrayList<Date> skippedDates = new ArrayList<>(skipped.size());
+      for (Attendance a : skipped) {
+        skippedDates.add(a.getClassDate());
+      }
+      ArrayList<Attendance> cancelled = this.subject.getCancelled();
+      ArrayList<Date> cancelledDates = new ArrayList<>(cancelled.size());
+      for (Attendance a : cancelled) {
+        cancelledDates.add(a.getClassDate());
+      }
+      List<DayDecorator> dayDecorators = new ArrayList<>(3);
+      dayDecorators.add(new CalendarDayDecorator(this, attendedDates, R.color.colorAttend));
+      dayDecorators.add(new CalendarDayDecorator(this, skippedDates, R.color.colorSkip));
+      dayDecorators.add(new CalendarDayDecorator(this, cancelledDates, R.color.colorCancel));
+      
+      this.dataBinding
+          .calendar
+          .setDecorators(dayDecorators);
+    }
+    
+    this.dataBinding
+        .calendar
+        .refreshCalendar(Calendar.getInstance(Locale.getDefault()));
   }
 }
