@@ -57,13 +57,13 @@ public class AttendanceWidget extends AppWidgetProvider {
     for (Subject s : allSubjects) {
       int numberOfClassesToAttend;
       if (countCancelled) {
-        numberOfClassesToAttend = Helper.calculateNumberOfClassesToAttend(
+        numberOfClassesToAttend = Helper.calculateAttendanceRequirement(
             s.getAttended().size(),
             s.getSkipped().size() + s.getCancelled().size(),
             s.getThreshold()
         );
       } else {
-        numberOfClassesToAttend = Helper.calculateNumberOfClassesToAttend(
+        numberOfClassesToAttend = Helper.calculateAttendanceRequirement(
             s.getAttended().size(),
             s.getSkipped().size(),
             s.getThreshold()

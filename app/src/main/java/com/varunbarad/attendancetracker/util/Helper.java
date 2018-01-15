@@ -14,11 +14,29 @@ public final class Helper {
   public static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.ENGLISH);
   public static final SimpleDateFormat dateFormatUserFriendly = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
   
-  public static int calculateNumberOfClassesToAttend(int attended, int skipped, int threshold) {
+  private static double calculateSkippableClasses(int attended, int skipped, int threshold) {
+    double numerator = (attended * (100 - threshold)) - (skipped * threshold);
+    double denominator = threshold;
+    
+    return (numerator / denominator);
+  }
+  
+  private static double calculateClassesToAttend(int attended, int skipped, int threshold) {
     int numerator = (attended * (threshold - 100)) + (skipped * threshold);
     int denominator = 100 - threshold;
     
     return (numerator / denominator);
+  }
+  
+  public static int calculateAttendanceRequirement(int attended, int skipped, int threshold) {
+    double toAttend = Helper.calculateClassesToAttend(attended, skipped, threshold);
+    double canSkip = Helper.calculateSkippableClasses(attended, skipped, threshold);
+    
+    if (toAttend >= 0.0d) {
+      return (int) Math.ceil(toAttend);
+    } else {
+      return (int) (-Math.floor(canSkip));
+    }
   }
   
   public static String serializeDate(Date date) {

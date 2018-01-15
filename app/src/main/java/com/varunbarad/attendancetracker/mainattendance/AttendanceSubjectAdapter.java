@@ -131,13 +131,13 @@ public class AttendanceSubjectAdapter extends RecyclerView.Adapter<AttendanceSub
       
       int numberOfClassesToAttend;
       if (PreferenceHelper.countCancelledAsSkipped(context)) {
-        numberOfClassesToAttend = Helper.calculateNumberOfClassesToAttend(
+        numberOfClassesToAttend = Helper.calculateAttendanceRequirement(
             subject.getAttended().size(),
             subject.getSkipped().size() + subject.getCancelled().size(),
             subject.getThreshold()
         );
       } else {
-        numberOfClassesToAttend = Helper.calculateNumberOfClassesToAttend(
+        numberOfClassesToAttend = Helper.calculateAttendanceRequirement(
             subject.getAttended().size(),
             subject.getSkipped().size(),
             subject.getThreshold()
