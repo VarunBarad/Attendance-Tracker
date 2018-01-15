@@ -83,7 +83,7 @@ public class AttendanceWidget extends AppWidgetProvider {
     PendingIntent pendingIntent =
         PendingIntent.getActivity(
             context,
-            0,
+            Attendance.ATTEND,
             intent,
             PendingIntent.FLAG_UPDATE_CURRENT
         );
@@ -95,7 +95,7 @@ public class AttendanceWidget extends AppWidgetProvider {
     PendingIntent pendingIntent =
         PendingIntent.getActivity(
             context,
-            0,
+            Attendance.SKIP,
             intent,
             PendingIntent.FLAG_UPDATE_CURRENT
         );
@@ -107,7 +107,7 @@ public class AttendanceWidget extends AppWidgetProvider {
     PendingIntent pendingIntent =
         PendingIntent.getActivity(
             context,
-            0,
+            Attendance.CANCEL,
             intent,
             PendingIntent.FLAG_UPDATE_CURRENT
         );
