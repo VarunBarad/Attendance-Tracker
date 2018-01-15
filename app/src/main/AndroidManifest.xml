@@ -37,7 +37,9 @@
                 android:resource="@xml/attendance_widget_info"/>
         </receiver>
 
-        <activity android:name=".widget.subjectselect.SubjectSelectActivity">
+        <activity
+            android:name=".widget.subjectselect.SubjectSelectActivity"
+            android:label="@string/title_subjectsList">
         </activity>
 
         <provider
