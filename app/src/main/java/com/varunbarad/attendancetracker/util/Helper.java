@@ -1,5 +1,12 @@
 package com.varunbarad.attendancetracker.util;
 
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+
+import com.varunbarad.attendancetracker.widget.AttendanceWidget;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -62,5 +69,15 @@ public final class Helper {
   
   public static String formatDateForUser(Date date) {
     return dateFormatUserFriendly.format(date);
+  }
+  
+  public static void updateWidgets(Context context) {
+    Intent widgetUpdateIntent = new Intent(context, AttendanceWidget.class);
+    widgetUpdateIntent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+    int[] widgetIds =
+        AppWidgetManager.getInstance(context)
+            .getAppWidgetIds(new ComponentName(context, AttendanceWidget.class));
+    widgetUpdateIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, widgetIds);
+    context.sendBroadcast(widgetUpdateIntent);
   }
 }

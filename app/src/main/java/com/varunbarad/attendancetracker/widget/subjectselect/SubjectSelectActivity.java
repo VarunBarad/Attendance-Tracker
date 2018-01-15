@@ -139,7 +139,8 @@ public class SubjectSelectActivity extends AppCompatActivity implements ListItem
         this.selectedAttendanceStatus
     );
     DatabaseHelper.addAttendance(this, attendance);
-    
+  
+    Helper.updateWidgets(this);
     this.finish();
   }
 }
