@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 26
@@ -29,6 +30,7 @@ ext {
     constraintLayoutVersion = '1.0.2'
     calendarViewLibraryVersion = 'v1.1'
     materialDialogsVersion = '0.9.6.0'
+    firebaseVersion = '11.4.2'
 
     jUnitVersion = '4.12'
     androidTestRunnerVersion = '1.0.1'
@@ -51,6 +53,9 @@ dependencies {
 
     // Material Dialogs
     implementation "com.afollestad.material-dialogs:core:${materialDialogsVersion}"
+
+    //Firebase
+    implementation "com.google.firebase:firebase-core:${firebaseVersion}"
 
     // JUnit Test Runner
     testImplementation "junit:junit:${jUnitVersion}"

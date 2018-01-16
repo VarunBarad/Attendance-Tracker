@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.varunbarad.attendancetracker.R;
 import com.varunbarad.attendancetracker.data.DatabaseHelper;
 import com.varunbarad.attendancetracker.data.model.Attendance;
@@ -25,6 +26,8 @@ public class SubjectSelectActivity extends AppCompatActivity implements ListItem
   private ActivitySubjectSelectBinding dataBinding;
   private SubjectsAdapter subjectsAdapter;
   private int selectedAttendanceStatus;
+  
+  private FirebaseAnalytics analytics;
 
   public static void start(Context context, int attendance) {
     Intent starter = getStarterIntent(context, attendance);
@@ -52,6 +55,8 @@ public class SubjectSelectActivity extends AppCompatActivity implements ListItem
     this.dataBinding
         .recyclerViewSubjects
         .setLayoutManager(layoutManager);
+  
+    this.analytics = FirebaseAnalytics.getInstance(this);
   }
   
   @Override
@@ -140,7 +145,17 @@ public class SubjectSelectActivity extends AppCompatActivity implements ListItem
     );
     DatabaseHelper.addAttendance(this, attendance);
   
+    this.logFirebaseEvent();
+  
     Helper.updateWidgets(this);
     this.finish();
+  }
+  
+  private void logFirebaseEvent() {
+    Bundle bundle = new Bundle();
+    bundle.putString(FirebaseAnalytics.Param.LOCATION, "widget");
+    
+    this.analytics
+        .logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
   }
 }
