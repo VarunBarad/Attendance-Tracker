@@ -2,6 +2,14 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'playStoreSigningKey'
+            keyPassword AttendanceTrackerKeyStorePassword
+            storeFile file('../release-documents/Attendance-Tracker.jks')
+            storePassword AttendanceTrackerKeyStorePassword
+        }
+    }
     compileSdkVersion 26
 
     dataBinding {
@@ -18,9 +26,16 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            buildConfigField 'String', "AdMobAppId", AdMobTestKey
+            resValue 'string', "adMob_unitId_mainAttendance", AdMobTestBannerUnitId
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField 'String', "AdMobAppId", AttendanceTrackerAdMobAppId
+            resValue 'string', "adMob_unitId_mainAttendance", AttendanceTrackerAdMobAdUnitIdMainAttendance
+            signingConfig signingConfigs.config
         }
     }
 }
@@ -56,6 +71,7 @@ dependencies {
 
     //Firebase
     implementation "com.google.firebase:firebase-core:${firebaseVersion}"
+    implementation "com.google.firebase:firebase-ads:${firebaseVersion}"
 
     // JUnit Test Runner
     testImplementation "junit:junit:${jUnitVersion}"

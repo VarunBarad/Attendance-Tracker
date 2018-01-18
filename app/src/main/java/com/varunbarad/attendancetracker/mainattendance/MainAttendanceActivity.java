@@ -10,7 +10,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.varunbarad.attendancetracker.BuildConfig;
 import com.varunbarad.attendancetracker.R;
 import com.varunbarad.attendancetracker.data.DatabaseHelper;
 import com.varunbarad.attendancetracker.data.model.Attendance;
@@ -50,6 +53,8 @@ public class MainAttendanceActivity extends AppCompatActivity implements ListIte
         .setLayoutManager(layoutManager);
   
     this.analytics = FirebaseAnalytics.getInstance(this);
+  
+    this.loadBannerAd();
   }
   
   @Override
@@ -89,15 +94,15 @@ public class MainAttendanceActivity extends AppCompatActivity implements ListIte
   
   private void showProgress() {
     this.dataBinding
-        .containerProgress
+        .contentProgress
         .setVisibility(View.VISIBLE);
     
     this.dataBinding
-        .containerContent
+        .recyclerViewAttendance
         .setVisibility(View.GONE);
     
     this.dataBinding
-        .containerPlaceholder
+        .contentPlaceholder
         .setVisibility(View.GONE);
   }
   
@@ -115,30 +120,30 @@ public class MainAttendanceActivity extends AppCompatActivity implements ListIte
       }
       
       this.dataBinding
-          .containerProgress
+          .contentProgress
           .setVisibility(View.GONE);
       
       this.dataBinding
-          .containerContent
+          .recyclerViewAttendance
           .setVisibility(View.VISIBLE);
       
       this.dataBinding
-          .containerPlaceholder
+          .contentPlaceholder
           .setVisibility(View.GONE);
     }
   }
   
   private void showPlaceholder() {
     this.dataBinding
-        .containerProgress
+        .contentProgress
         .setVisibility(View.GONE);
     
     this.dataBinding
-        .containerContent
+        .recyclerViewAttendance
         .setVisibility(View.GONE);
     
     this.dataBinding
-        .containerPlaceholder
+        .contentPlaceholder
         .setVisibility(View.VISIBLE);
   }
   
@@ -163,5 +168,17 @@ public class MainAttendanceActivity extends AppCompatActivity implements ListIte
     
     this.analytics
         .logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+  }
+  
+  private void loadBannerAd() {
+    MobileAds.initialize(this, BuildConfig.AdMobAppId);
+    
+    AdRequest adRequest =
+        new AdRequest.Builder()
+            .build();
+    
+    this.dataBinding
+        .adViewBanner
+        .loadAd(adRequest);
   }
 }
