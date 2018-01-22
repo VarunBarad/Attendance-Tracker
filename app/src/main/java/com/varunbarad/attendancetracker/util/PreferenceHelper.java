@@ -14,13 +14,19 @@ import com.varunbarad.attendancetracker.R;
 public class PreferenceHelper {
   public static int getDefaultThreshold(Context context) {
     SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-    
-    return preferences.getInt(context.getString(R.string.PREFS_KEY_THRESHOLD), 0);
+  
+    return preferences.getInt(
+        context.getString(R.string.PREFS_KEY_THRESHOLD),
+        context.getResources().getInteger(R.integer.default_threshold)
+    );
   }
   
   public static boolean countCancelledAsSkipped(Context context) {
     SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-    
-    return preferences.getBoolean(context.getString(R.string.PREFS_KEY_COUNT_CANCELLED), false);
+  
+    return preferences.getBoolean(
+        context.getString(R.string.PREFS_KEY_COUNT_CANCELLED),
+        context.getResources().getBoolean(R.bool.default_countCancelled)
+    );
   }
 }

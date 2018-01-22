@@ -3,14 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <SeekBarPreference
-        android:defaultValue="50"
+        android:defaultValue="@integer/default_threshold"
         android:key="@string/PREFS_KEY_THRESHOLD"
         android:max="100"
         android:summary="@string/desc_prefThreshold"
         android:title="@string/label_prefThreshold"/>
 
     <CheckBoxPreference
-        android:defaultValue="false"
+        android:defaultValue="@bool/default_countCancelled"
         android:key="@string/PREFS_KEY_COUNT_CANCELLED"
         android:summaryOff="@string/desc_prefCountCancelled_off"
         android:summaryOn="@string/desc_prefCountCancelled_on"
