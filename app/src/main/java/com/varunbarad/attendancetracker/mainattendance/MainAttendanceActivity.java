@@ -15,6 +15,7 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.varunbarad.attendancetracker.BuildConfig;
 import com.varunbarad.attendancetracker.R;
+import com.varunbarad.attendancetracker.about.DeveloperActivity;
 import com.varunbarad.attendancetracker.data.DatabaseHelper;
 import com.varunbarad.attendancetracker.data.model.Attendance;
 import com.varunbarad.attendancetracker.data.model.Subject;
@@ -83,7 +84,7 @@ public class MainAttendanceActivity extends AppCompatActivity implements ListIte
         SettingsActivity.start(this);
         break;
       case R.id.action_developer:
-        //ToDo: Show about-us screen
+        DeveloperActivity.start(this);
         break;
       default:
         return super.onOptionsItemSelected(item);

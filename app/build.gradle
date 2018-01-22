@@ -46,6 +46,9 @@ ext {
     calendarViewLibraryVersion = 'v1.1'
     materialDialogsVersion = '0.9.6.0'
     firebaseVersion = '11.4.2'
+    retrofitVersion = '2.3.0'
+    picassoVersion = '2.5.2'
+    gsonVersion = '2.8.2'
 
     jUnitVersion = '4.12'
     androidTestRunnerVersion = '1.0.1'
@@ -72,6 +75,16 @@ dependencies {
     //Firebase
     implementation "com.google.firebase:firebase-core:${firebaseVersion}"
     implementation "com.google.firebase:firebase-ads:${firebaseVersion}"
+
+    // Used to load images from network
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+
+    // Library used for JSON serialization/deserialization
+    implementation 'com.google.code.gson:gson:2.8.2'
+
+    // Retrofit to fetch and parse API responses
+    implementation "com.squareup.retrofit2:retrofit:${retrofitVersion}"
+    implementation "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
 
     // JUnit Test Runner
     testImplementation "junit:junit:${jUnitVersion}"

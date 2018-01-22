@@ -4,6 +4,7 @@ import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 
 import com.varunbarad.attendancetracker.widget.AttendanceWidget;
 
@@ -79,5 +80,11 @@ public final class Helper {
             .getAppWidgetIds(new ComponentName(context, AttendanceWidget.class));
     widgetUpdateIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, widgetIds);
     context.sendBroadcast(widgetUpdateIntent);
+  }
+  
+  public static void openUrlInBrowser(String url, Context context) {
+    Uri githubUri = Uri.parse(url);
+    Intent browserIntent = new Intent(Intent.ACTION_VIEW, githubUri);
+    context.startActivity(browserIntent);
   }
 }

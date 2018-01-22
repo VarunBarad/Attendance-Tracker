@@ -44,6 +44,7 @@
     <string name="message_attendance_noSubjectsForCurrentFilter">There appears to be no subjects for the applied filter.\nTry adding a new subject.</string>
     <string name="message_futureDate">You cannot set/edit a future date\'s attendance.</string>
     <string name="message_setEditAttendance">Set attendance for %1$s</string>
+    <string name="message_developerDetails">Greetings, and thanks for using my application.\nTo discuss anything interesting under the sky, reach out to me. I am eager to hear from you.\n- Varun Barad</string>
 
     <string name="PREFS_KEY_THRESHOLD" translatable="false">default_threshold</string>
     <string name="PREFS_KEY_COUNT_CANCELLED" translatable="false">count_cancelled</string>
