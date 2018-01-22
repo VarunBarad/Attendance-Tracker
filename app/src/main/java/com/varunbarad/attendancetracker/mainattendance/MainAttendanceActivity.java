@@ -82,7 +82,7 @@ public class MainAttendanceActivity extends AppCompatActivity implements ListIte
       case R.id.action_settings:
         SettingsActivity.start(this);
         break;
-      case R.id.action_about:
+      case R.id.action_developer:
         //ToDo: Show about-us screen
         break;
       default:

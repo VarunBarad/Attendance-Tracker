@@ -16,9 +16,9 @@
         android:title="@string/label_settings"
         app:showAsAction="never"/>
     <item
-        android:id="@+id/action_about"
+        android:id="@+id/action_developer"
         android:icon="@drawable/ic_developer"
         android:orderInCategory="300"
-        android:title="@string/label_aboutUs"
+        android:title="@string/label_developer"
         app:showAsAction="never"/>
 </menu>
