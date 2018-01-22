@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.stacktips.view.CalendarListener;
 import com.stacktips.view.DayDecorator;
@@ -112,6 +114,22 @@ public class SubjectDetailsActivity extends AppCompatActivity {
     MaterialDialog attendanceDialog = new MaterialDialog.Builder(SubjectDetailsActivity.this)
         .title(R.string.label_setAttendance)
         .content(R.string.message_setEditAttendance, Helper.formatDateForUser(date))
+        .negativeText(R.string.label_removeAttendance)
+        .onNegative(new MaterialDialog.SingleButtonCallback() {
+          @Override
+          public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+            Attendance attendanceToDelete = new Attendance(
+                SubjectDetailsActivity.this.subject.getId(),
+                Helper.stripTime(date),
+                -1
+            );
+            DatabaseHelper.deleteAttendance(context, attendanceToDelete);
+        
+            SubjectDetailsActivity
+                .this
+                .refreshData();
+          }
+        })
         .items(Arrays.asList(attendanceLabels))
         .itemsCallbackSingleChoice(existingIndex, new MaterialDialog.ListCallbackSingleChoice() {
           @Override
