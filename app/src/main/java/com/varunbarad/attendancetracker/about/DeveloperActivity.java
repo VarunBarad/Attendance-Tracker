@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.squareup.picasso.Picasso;
@@ -64,6 +65,17 @@ public class DeveloperActivity extends AppCompatActivity implements LoaderManage
   @Override
   public void onLoaderReset(Loader<DeveloperDetails> loader) {
   
+  }
+  
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    int id = item.getItemId();
+    if (id == android.R.id.home) {
+      this.onBackPressed();
+      return true;
+    } else {
+      return super.onOptionsItemSelected(item);
+    }
   }
   
   private void showDetails(DeveloperDetails developerDetails) {
