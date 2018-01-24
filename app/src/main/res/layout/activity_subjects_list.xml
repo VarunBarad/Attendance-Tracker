@@ -115,6 +115,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/margin_floatingActionButton"
+            android:contentDescription="@string/contentDesc_addSubject"
             android:tint="@color/colorText"
             app:elevation="@dimen/elevation_floatingActionButton"
             app:fabSize="normal"

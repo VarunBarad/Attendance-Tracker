@@ -36,6 +36,7 @@
     <string name="contentDesc_skip">Button to mark class as skipped</string>
     <string name="contentDesc_cancel">Button to mark class as cancelled</string>
     <string name="contentDesc_openWebsite">Show my other creations</string>
+    <string name="contentDesc_addSubject">Add a new subject</string>
 
     <string-array name="subjectFilterItems">
         <item>Current</item>
