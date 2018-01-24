@@ -24,17 +24,50 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".mainattendance.MainAttendanceActivity">
+        <activity
+            android:name=".mainattendance.MainAttendanceActivity">
         </activity>
-        <activity android:name=".subject.listsubjects.SubjectsListActivity">
+        <activity
+            android:name=".subject.listsubjects.SubjectsListActivity"
+            android:parentActivityName=".mainattendance.MainAttendanceActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".mainattendance.MainAttendanceActivity"/>
         </activity>
-        <activity android:name=".subject.addsubject.AddSubjectActivity">
+        <activity
+            android:name=".subject.addsubject.AddSubjectActivity"
+            android:parentActivityName=".subject.listsubjects.SubjectsListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".subject.listsubjects.SubjectsListActivity"/>
         </activity>
-        <activity android:name=".subject.subjectdetails.SubjectDetailsActivity">
+        <activity
+            android:name=".subject.subjectdetails.SubjectDetailsActivity"
+            android:parentActivityName=".subject.listsubjects.SubjectsListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".subject.listsubjects.SubjectsListActivity"/>
         </activity>
-        <activity android:name=".subject.editsubject.EditSubjectActivity">
+        <activity
+            android:name=".subject.editsubject.EditSubjectActivity"
+            android:parentActivityName=".subject.subjectdetails.SubjectDetailsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".subject.subjectdetails.SubjectDetailsActivity"/>
         </activity>
-        <activity android:name=".settings.SettingsActivity">
+        <activity
+            android:name=".settings.SettingsActivity"
+            android:parentActivityName=".mainattendance.MainAttendanceActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".mainattendance.MainAttendanceActivity"/>
+        </activity>
+        <activity
+            android:name=".about.DeveloperActivity"
+            android:parentActivityName=".mainattendance.MainAttendanceActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".mainattendance.MainAttendanceActivity"/>
         </activity>
 
         <receiver android:name=".widget.AttendanceWidget">
@@ -56,9 +89,6 @@
             android:name=".data.sqlite.AttendanceProvider"
             android:authorities="com.varunbarad.attendancetracker"
             android:exported="false"/>
-
-        <activity android:name=".about.DeveloperActivity">
-        </activity>
     </application>
 
 </manifest>
