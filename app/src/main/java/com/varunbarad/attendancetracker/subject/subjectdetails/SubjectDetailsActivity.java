@@ -210,10 +210,9 @@ public class SubjectDetailsActivity extends AppCompatActivity {
     this.getSupportActionBar()
         .setTitle(this.subject.getName());
     
-    //ToDo: Extract this format to strings.xml
     this.dataBinding
         .valueThreshold
-        .setText(String.format(Locale.getDefault(), "%d%% Required", this.subject.getThreshold()));
+        .setText(this.getString(R.string.message_requiredAttendance, this.subject.getThreshold()));
     
     this.dataBinding
         .valueAttended

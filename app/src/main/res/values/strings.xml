@@ -21,6 +21,10 @@
     <string name="label_developer">Developer</string>
     <string name="label_setAttendance">Set Attendance</string>
     <string name="label_removeAttendance">Remove attendance</string>
+    <string name="label_requiredThreshold">Required attendance threshold</string>
+    <string name="label_classesAttended">Classes attended</string>
+    <string name="label_classesSkipped">Classes skipped</string>
+    <string name="label_classesCancelled">Classes cancelled</string>
 
     <string name="hint_subjectName">Enter subject name</string>
 
@@ -38,6 +42,7 @@
         <item>Archived</item>
     </string-array>
 
+    <string name="message_requiredAttendance">%1$d%% Required</string>
     <string name="message_attendance_canSkip">Classes you can safely skip: %1$d</string>
     <string name="message_attendance_needAttend">Classes you need to attend: %1$d</string>
     <string name="message_widget_lagging">Classes you are lagging in: %1$d</string>

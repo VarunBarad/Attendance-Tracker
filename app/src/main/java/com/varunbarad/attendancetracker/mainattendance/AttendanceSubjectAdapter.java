@@ -15,7 +15,6 @@ import com.varunbarad.attendancetracker.util.PreferenceHelper;
 import com.varunbarad.attendancetracker.util.eventlistener.ListItemClickListener;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 /**
  * Creator: Varun Barad
@@ -115,7 +114,7 @@ public class AttendanceSubjectAdapter extends RecyclerView.Adapter<AttendanceSub
       
       this.itemBinding
           .threshold
-          .setText(String.format(Locale.getDefault(), "%d%% Required", subject.getThreshold()));
+          .setText(context.getString(R.string.message_requiredAttendance, subject.getThreshold()));
       
       this.itemBinding
           .textViewAttend
