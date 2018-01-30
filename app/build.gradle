@@ -25,6 +25,7 @@ android {
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         debug {
             buildConfigField 'String', "AdMobAppId", AdMobTestKey
@@ -36,6 +37,15 @@ android {
             buildConfigField 'String', "AdMobAppId", AttendanceTrackerAdMobAppId
             resValue 'string', "adMob_unitId_mainAttendance", AttendanceTrackerAdMobAdUnitIdMainAttendance
             signingConfig signingConfigs.config
+        }
+    }
+
+    flavorDimensions 'application'
+
+    productFlavors {
+        free {
+            applicationId 'com.varunbarad.attendancetracker'
+            dimension 'application'
         }
     }
 }
