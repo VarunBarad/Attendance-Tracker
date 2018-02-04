@@ -44,7 +44,8 @@
                     android:id="@+id/textInput_subjectName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/hint_subjectName"/>
+                    android:hint="@string/hint_subjectName"
+                    android:inputType="textPersonName"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.v7.widget.AppCompatSeekBar
