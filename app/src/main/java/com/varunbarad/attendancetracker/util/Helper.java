@@ -37,13 +37,17 @@ public final class Helper {
   }
   
   public static int calculateAttendanceRequirement(int attended, int skipped, int threshold) {
-    double toAttend = Helper.calculateClassesToAttend(attended, skipped, threshold);
-    double canSkip = Helper.calculateSkippableClasses(attended, skipped, threshold);
-    
-    if (toAttend >= 0.0d) {
-      return (int) Math.ceil(toAttend);
+    if (threshold == 0) {
+      return 0;
     } else {
-      return (int) (-Math.floor(canSkip));
+      double toAttend = Helper.calculateClassesToAttend(attended, skipped, threshold);
+      double canSkip = Helper.calculateSkippableClasses(attended, skipped, threshold);
+  
+      if (toAttend >= 0.0d) {
+        return (int) Math.ceil(toAttend);
+      } else {
+        return (int) (-Math.floor(canSkip));
+      }
     }
   }
   
