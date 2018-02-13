@@ -21,4 +21,10 @@
         android:orderInCategory="300"
         android:title="@string/label_developer"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_rateApp"
+        android:icon="@drawable/ic_star"
+        android:orderInCategory="400"
+        android:title="@string/label_rateApp"
+        app:showAsAction="never"/>
 </menu>

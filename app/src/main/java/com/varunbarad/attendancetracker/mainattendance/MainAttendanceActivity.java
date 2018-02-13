@@ -86,6 +86,9 @@ public class MainAttendanceActivity extends AppCompatActivity implements ListIte
       case R.id.action_developer:
         DeveloperActivity.start(this);
         break;
+      case R.id.action_rateApp:
+        Helper.showRatingsScreen(this, this.getPackageName());
+        break;
       default:
         return super.onOptionsItemSelected(item);
     }

@@ -25,6 +25,7 @@
     <string name="label_classesAttended">Classes attended</string>
     <string name="label_classesSkipped">Classes skipped</string>
     <string name="label_classesCancelled">Classes cancelled</string>
+    <string name="label_rateApp">Rate App!</string>
 
     <string name="hint_subjectName">Enter subject name</string>
 

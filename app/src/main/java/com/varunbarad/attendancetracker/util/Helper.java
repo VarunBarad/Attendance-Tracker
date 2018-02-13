@@ -1,6 +1,7 @@
 package com.varunbarad.attendancetracker.util;
 
 import android.appwidget.AppWidgetManager;
+import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -90,5 +91,17 @@ public final class Helper {
     Uri githubUri = Uri.parse(url);
     Intent browserIntent = new Intent(Intent.ACTION_VIEW, githubUri);
     context.startActivity(browserIntent);
+  }
+  
+  public static void showRatingsScreen(Context context, String packageName) {
+    String playStoreAppUri = "market://details?id=" + packageName;
+    String playStoreSiteUri = "https://play.google.com/store/apps/details?id=" + packageName;
+    
+    try {
+      Intent playStoreAppIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(playStoreAppUri));
+      context.startActivity(playStoreAppIntent);
+    } catch (ActivityNotFoundException e) {
+      Helper.openUrlInBrowser(playStoreSiteUri, context);
+    }
   }
 }
