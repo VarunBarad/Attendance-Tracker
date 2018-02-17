@@ -12,6 +12,8 @@ import com.varunbarad.attendancetracker.R;
  * Project: AttendanceTracker
  */
 public class PreferenceHelper {
+  public static final int MAX_THRESHOLD = 100;
+  
   public static int getDefaultThreshold(Context context) {
     SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
   
@@ -21,6 +23,16 @@ public class PreferenceHelper {
     );
   }
   
+  public static void setDefaultThreshold(Context context, int threshold) {
+    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+    SharedPreferences.Editor editor = preferences.edit();
+    
+    editor.putInt(
+        context.getString(R.string.PREFS_KEY_THRESHOLD),
+        threshold
+    ).apply();
+  }
+  
   public static boolean countCancelledAsSkipped(Context context) {
     SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
   
@@ -28,5 +40,15 @@ public class PreferenceHelper {
         context.getString(R.string.PREFS_KEY_COUNT_CANCELLED),
         context.getResources().getBoolean(R.bool.default_countCancelled)
     );
+  }
+  
+  public static void setCountCancelledAsSkipped(Context context, boolean countCancelledAsSkipped) {
+    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+    SharedPreferences.Editor editor = preferences.edit();
+    
+    editor.putBoolean(
+        context.getString(R.string.PREFS_KEY_COUNT_CANCELLED),
+        countCancelledAsSkipped
+    ).apply();
   }
 }
