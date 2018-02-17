@@ -22,11 +22,118 @@
                 app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay"/>
         </android.support.design.widget.AppBarLayout>
 
-        <fragment
-            android:id="@+id/fragment_settings"
-            android:name="com.varunbarad.attendancetracker.settings.SettingsFragment"
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/threshold_textView_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/label_prefThreshold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/threshold_textView_subTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/desc_prefThreshold"
+                    app:layout_constraintLeft_toLeftOf="@+id/threshold_textView_title"
+                    app:layout_constraintRight_toRightOf="@+id/threshold_textView_title"
+                    app:layout_constraintTop_toBottomOf="@+id/threshold_textView_title"/>
+
+                <android.support.v7.widget.AppCompatSeekBar
+                    android:id="@+id/threshold_seekBar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:paddingEnd="8dp"
+                    android:paddingStart="8dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/threshold_textView_value"
+                    app:layout_constraintTop_toBottomOf="@+id/threshold_textView_subTitle"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/threshold_textView_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginStart="0dp"
+                    app:layout_constraintBottom_toBottomOf="@id/threshold_seekBar"
+                    app:layout_constraintLeft_toRightOf="@+id/threshold_seekBar"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/threshold_seekBar"
+                    tools:text="50%"/>
+
+                <View
+                    android:id="@+id/separator_1"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@color/colorSeparator"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/threshold_seekBar"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/countCancelled_textView_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/label_countCancelled"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/countCancelled_checkBox"
+                    app:layout_constraintTop_toBottomOf="@+id/separator_1"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/countCancelled_textView_subTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/desc_prefCountCancelled_off"
+                    app:layout_constraintLeft_toLeftOf="@+id/countCancelled_textView_title"
+                    app:layout_constraintRight_toRightOf="@+id/countCancelled_textView_title"
+                    app:layout_constraintTop_toBottomOf="@+id/countCancelled_textView_title"/>
+
+                <android.support.v7.widget.AppCompatCheckBox
+                    android:id="@+id/countCancelled_checkBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintLeft_toRightOf="@+id/countCancelled_textView_title"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/countCancelled_textView_title"/>
+
+                <View
+                    android:id="@+id/separator_2"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@color/colorSeparator"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/countCancelled_textView_subTitle"/>
+            </android.support.constraint.ConstraintLayout>
+        </android.support.v4.widget.NestedScrollView>
     </android.support.design.widget.CoordinatorLayout>
 </layout>
