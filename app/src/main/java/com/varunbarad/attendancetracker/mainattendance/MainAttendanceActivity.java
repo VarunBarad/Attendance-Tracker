@@ -10,10 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.varunbarad.attendancetracker.BuildConfig;
 import com.varunbarad.attendancetracker.R;
 import com.varunbarad.attendancetracker.about.DeveloperActivity;
 import com.varunbarad.attendancetracker.data.DatabaseHelper;
@@ -55,7 +52,7 @@ public class MainAttendanceActivity extends AppCompatActivity implements ListIte
   
     this.analytics = FirebaseAnalytics.getInstance(this);
   
-    this.loadBannerAd();
+    AdHelper.loadBannerAd(this.dataBinding);
   }
   
   @Override
@@ -172,17 +169,5 @@ public class MainAttendanceActivity extends AppCompatActivity implements ListIte
     
     this.analytics
         .logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
-  }
-  
-  private void loadBannerAd() {
-    MobileAds.initialize(this, BuildConfig.AdMobAppId);
-    
-    AdRequest adRequest =
-        new AdRequest.Builder()
-            .build();
-    
-    this.dataBinding
-        .adViewBanner
-        .loadAd(adRequest);
   }
 }
