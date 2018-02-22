@@ -31,7 +31,7 @@
                 android:id="@+id/content"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/adView_banner"
+                app:layout_constraintBottom_toTopOf="@+id/adView_container"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -56,6 +56,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    tools:listitem="@layout/list_item_attendance"
                     tools:visibility="visible"/>
 
                 <android.support.constraint.ConstraintLayout
@@ -81,15 +82,15 @@
                 </android.support.constraint.ConstraintLayout>
             </android.support.constraint.ConstraintLayout>
 
-            <include
+            <FrameLayout
                 android:id="@+id/adView_container"
-                layout="@layout/ad_banner_main_attendance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/content"/>
+                app:layout_constraintTop_toBottomOf="@+id/content">
+            </FrameLayout>
         </android.support.constraint.ConstraintLayout>
     </android.support.design.widget.CoordinatorLayout>
 </layout>

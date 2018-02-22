@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'kotlin-kapt'
 
 android {
     signingConfigs {
@@ -29,14 +30,14 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField 'String', "AdMobAppId", AdMobTestKey
-            resValue 'string', "adMob_unitId_mainAttendance", AdMobTestBannerUnitId
+            buildConfigField 'String', "InMobiAccountId", AttendanceTracker_InMobiAccountId
+            buildConfigField 'String', "InMobiPlacementIdMainAttendance", AttendanceTracker_InMobiPlacementIdMainAttendance
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField 'String', "AdMobAppId", AttendanceTrackerAdMobAppId
-            resValue 'string', "adMob_unitId_mainAttendance", AttendanceTrackerAdMobAdUnitIdMainAttendance
+            buildConfigField 'String', "InMobiAccountId", AttendanceTracker_InMobiAccountId
+            buildConfigField 'String', "InMobiPlacementIdMainAttendance", AttendanceTracker_InMobiPlacementIdMainAttendance
             signingConfig signingConfigs.config
         }
     }
@@ -60,6 +61,7 @@ ext {
     retrofitVersion = '2.3.0'
     picassoVersion = '2.5.2'
     gsonVersion = '2.8.2'
+    inMobiVersion = '7.0.0'
 
     jUnitVersion = '4.12'
     androidTestRunnerVersion = '1.0.1'
@@ -67,7 +69,14 @@ ext {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs/main', include: ['*.jar'])
+    freeImplementation fileTree(dir: 'libs/free', include: ['*.jar'])
+
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlin_version}"
+
+    // Android Data-Binding Annotation Processor for Kotlin
+    kapt "com.android.databinding:compiler:3.0.1"
 
     // Google Design Support libraries
     implementation "com.android.support:appcompat-v7:${supportLibraryVersion}"
@@ -83,9 +92,14 @@ dependencies {
     // Material Dialogs
     implementation "com.afollestad.material-dialogs:core:${materialDialogsVersion}"
 
+    // Google Play Services
+    implementation "com.google.android.gms:play-services:${firebaseVersion}"
+
     //Firebase
     implementation "com.google.firebase:firebase-core:${firebaseVersion}"
-    implementation "com.google.firebase:firebase-ads:${firebaseVersion}"
+
+    // InMobi Ad Platform
+    implementation "com.inmobi.monetization:inmobi-ads:${inMobiVersion}"
 
     // Used to load images from network
     implementation 'com.squareup.picasso:picasso:2.5.2'
@@ -104,8 +118,12 @@ dependencies {
     androidTestImplementation "com.android.support.test:runner:${androidTestRunnerVersion}"
     // Core espresso library for UI tests
     androidTestImplementation "com.android.support.test.espresso:espresso-core:${espressoVersion}"
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }
+
 repositories {
     mavenCentral()
+}
+
+kapt {
+    generateStubs = true
 }
