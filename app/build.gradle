@@ -75,10 +75,10 @@ dependencies {
     freeImplementation fileTree(dir: 'libs/free', include: ['*.jar'])
 
     // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlin_version}"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlinVersion}"
 
     // Android Data-Binding Annotation Processor for Kotlin
-    kapt "com.android.databinding:compiler:3.0.1"
+    kapt "com.android.databinding:compiler:${androidPluginVersion}"
 
     // Google Support Library for Multidex
     implementation "com.android.support:multidex:${multiDexVersion}"
@@ -107,10 +107,10 @@ dependencies {
     implementation "com.inmobi.monetization:inmobi-ads:${inMobiVersion}"
 
     // Used to load images from network
-    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation "com.squareup.picasso:picasso:${picassoVersion}"
 
     // Library used for JSON serialization/deserialization
-    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation "com.google.code.gson:gson:${gsonVersion}"
 
     // Retrofit to fetch and parse API responses
     implementation "com.squareup.retrofit2:retrofit:${retrofitVersion}"
