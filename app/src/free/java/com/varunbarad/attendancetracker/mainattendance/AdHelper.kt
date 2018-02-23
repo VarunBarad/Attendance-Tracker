@@ -8,6 +8,7 @@ import com.inmobi.ads.InMobiBanner
 import com.inmobi.sdk.InMobiSdk
 import com.varunbarad.attendancetracker.BuildConfig
 import com.varunbarad.attendancetracker.databinding.ActivityMainAttendanceBinding
+import com.varunbarad.attendancetracker.util.Helper
 
 /**
  * Creator: Varun Barad
@@ -30,7 +31,7 @@ fun loadBannerAd(dataBinding: ActivityMainAttendanceBinding): Unit {
 
     val layoutParams = FrameLayout.LayoutParams(
             FrameLayout.LayoutParams.MATCH_PARENT,
-            FrameLayout.LayoutParams.MATCH_PARENT
+            Helper.convertDpToPx(50, dataBinding.root.context)
     )
 
     dataBinding

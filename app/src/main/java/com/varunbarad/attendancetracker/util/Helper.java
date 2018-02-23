@@ -6,6 +6,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.TypedValue;
 
 import com.varunbarad.attendancetracker.widget.AttendanceWidget;
 
@@ -103,5 +104,13 @@ public final class Helper {
     } catch (ActivityNotFoundException e) {
       Helper.openUrlInBrowser(playStoreSiteUri, context);
     }
+  }
+  
+  public static int convertDpToPx(int dp, Context context) {
+    return Math.round(TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_DIP,
+        dp,
+        context.getResources().getDisplayMetrics()
+    ));
   }
 }
