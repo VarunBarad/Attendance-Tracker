@@ -25,6 +25,7 @@ android {
         versionCode 1
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -53,6 +54,7 @@ android {
 }
 
 ext {
+    multiDexVersion = '1.0.2'
     supportLibraryVersion = '26.1.0'
     constraintLayoutVersion = '1.0.2'
     calendarViewLibraryVersion = 'v1.1'
@@ -77,6 +79,9 @@ dependencies {
 
     // Android Data-Binding Annotation Processor for Kotlin
     kapt "com.android.databinding:compiler:3.0.1"
+
+    // Google Support Library for Multidex
+    implementation "com.android.support:multidex:${multiDexVersion}"
 
     // Google Design Support libraries
     implementation "com.android.support:appcompat-v7:${supportLibraryVersion}"
