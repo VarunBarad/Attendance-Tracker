@@ -41,10 +41,16 @@ public final class Helper {
   public static int calculateAttendanceRequirement(int attended, int skipped, int threshold) {
     if (threshold == 0) {
       return 0;
+    } else if (threshold == 100) {
+      if (skipped == 0) {
+        return 0;
+      } else {
+        return Integer.MAX_VALUE;
+      }
     } else {
       double toAttend = Helper.calculateClassesToAttend(attended, skipped, threshold);
       double canSkip = Helper.calculateSkippableClasses(attended, skipped, threshold);
-  
+    
       if (toAttend >= 0.0d) {
         return (int) Math.ceil(toAttend);
       } else {
