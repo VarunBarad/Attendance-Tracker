@@ -6,8 +6,11 @@
     <string name="title_developer">Developer</string>
 
     <string name="label_attend">Attend</string>
+    <string name="label_attended">Attended</string>
     <string name="label_skip">Skip</string>
+    <string name="label_skipped">Skipped</string>
     <string name="label_cancel">Cancel</string>
+    <string name="label_cancelled">Cancelled</string>
     <string name="label_subjectFilter">Subject Filter</string>
     <string name="label_clear">Clear</string>
     <string name="label_add">Add</string>
