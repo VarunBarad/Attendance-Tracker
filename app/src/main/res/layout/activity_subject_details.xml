@@ -22,179 +22,176 @@
                 app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay"/>
         </android.support.design.widget.AppBarLayout>
 
-        <android.support.v4.widget.NestedScrollView
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/margin_activityVertical"
+            android:layout_marginEnd="@dimen/margin_activityHorizontal"
+            android:layout_marginStart="@dimen/margin_activityHorizontal"
+            android:layout_marginTop="@dimen/margin_activityVertical"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <android.support.constraint.ConstraintLayout
+            <com.stacktips.view.CustomCalendarView
+                android:id="@+id/calendar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="@dimen/margin_activityVertical"
-                android:layout_marginEnd="@dimen/margin_activityHorizontal"
-                android:layout_marginStart="@dimen/margin_activityHorizontal"
-                android:layout_marginTop="@dimen/margin_activityVertical">
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
 
-                <com.stacktips.view.CustomCalendarView
-                    android:id="@+id/calendar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorAccent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+            <android.support.v4.widget.Space
+                android:id="@+id/space_calendar_details"
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/calendar"/>
 
-                <android.support.v4.widget.Space
-                    android:id="@+id/space_calendar_legend"
-                    android:layout_width="match_parent"
-                    android:layout_height="4dp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/calendar"/>
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_required"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_marginRight="2dp"
+                app:cardCornerRadius="4dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/card_attended"
+                app:layout_constraintTop_toBottomOf="@+id/space_calendar_details">
 
                 <android.support.v7.widget.LinearLayoutCompat
-                    android:id="@+id/legend_container"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/space_calendar_legend">
-
-                    <View
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:layout_gravity="center_vertical"
-                        android:background="@color/colorAttend"/>
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
                     <android.support.v7.widget.AppCompatTextView
-                        android:layout_width="0dp"
+                        android:id="@+id/value_threshold"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_weight="1"
-                        android:gravity="start|top"
-                        android:text="@string/label_attended"/>
-
-                    <View
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:layout_gravity="center_vertical"
-                        android:background="@color/colorSkip"/>
+                        android:background="@color/colorSeparator"
+                        android:gravity="center"
+                        android:paddingBottom="8dp"
+                        android:paddingTop="8dp"
+                        android:textColor="@color/colorText"
+                        android:textSize="24sp"
+                        tools:text="75%"/>
 
                     <android.support.v7.widget.AppCompatTextView
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_weight="1"
-                        android:gravity="start|top"
-                        android:text="@string/label_skipped"/>
-
-                    <View
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:layout_gravity="center_vertical"
-                        android:background="@color/colorCancel"/>
-
-                    <android.support.v7.widget.AppCompatTextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_weight="1"
-                        android:gravity="start|top"
-                        android:text="@string/label_cancelled"/>
+                        android:gravity="center"
+                        android:text="@string/label_required"
+                        android:textSize="16sp"/>
                 </android.support.v7.widget.LinearLayoutCompat>
+            </android.support.v7.widget.CardView>
 
-                <android.support.v4.widget.Space
-                    android:id="@+id/space_legend_threshold"
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_attended"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_marginStart="2dp"
+                app:layout_constraintLeft_toRightOf="@+id/card_required"
+                app:layout_constraintRight_toLeftOf="@+id/card_skipped"
+                app:layout_constraintTop_toBottomOf="@+id/space_calendar_details">
+
+                <android.support.v7.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
-                    android:layout_height="16dp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/legend_container"/>
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/label_threshold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="start|center_vertical"
-                    android:text="@string/label_requiredThreshold"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/space_legend_threshold"/>
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/value_attended"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorAttend"
+                        android:gravity="center"
+                        android:paddingBottom="8dp"
+                        android:paddingTop="8dp"
+                        android:textColor="@color/colorText"
+                        android:textSize="24sp"
+                        tools:text="15"/>
 
-                <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/value_threshold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="end|center_vertical"
-                    app:layout_constraintBaseline_toBaselineOf="@+id/label_threshold"
-                    app:layout_constraintRight_toRightOf="parent"
-                    tools:text="75%"/>
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/label_attended"
+                        android:textSize="16sp"/>
+                </android.support.v7.widget.LinearLayoutCompat>
+            </android.support.v7.widget.CardView>
 
-                <android.support.v4.widget.Space
-                    android:id="@+id/space_threshold_attendance"
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_skipped"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_marginStart="2dp"
+                app:layout_constraintLeft_toRightOf="@+id/card_attended"
+                app:layout_constraintRight_toLeftOf="@+id/card_cancelled"
+                app:layout_constraintTop_toBottomOf="@+id/space_calendar_details">
+
+                <android.support.v7.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
-                    android:layout_height="8dp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/label_threshold"/>
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/label_attended"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="start|center_vertical"
-                    android:text="@string/label_classesAttended"
-                    app:layout_constraintLeft_toLeftOf="@+id/label_threshold"
-                    app:layout_constraintTop_toBottomOf="@+id/space_threshold_attendance"/>
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/value_skipped"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorSkip"
+                        android:gravity="center"
+                        android:paddingBottom="8dp"
+                        android:paddingTop="8dp"
+                        android:textColor="@color/colorText"
+                        android:textSize="24sp"
+                        tools:text="3"/>
 
-                <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/value_attended"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="end|center_vertical"
-                    app:layout_constraintBaseline_toBaselineOf="@+id/label_attended"
-                    app:layout_constraintRight_toRightOf="@+id/value_threshold"
-                    tools:text="15"/>
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/label_skipped"
+                        android:textSize="16sp"/>
+                </android.support.v7.widget.LinearLayoutCompat>
+            </android.support.v7.widget.CardView>
 
-                <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/label_skipped"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="start|center_vertical"
-                    android:text="@string/label_classesSkipped"
-                    app:layout_constraintLeft_toLeftOf="@+id/label_threshold"
-                    app:layout_constraintTop_toBottomOf="@+id/label_attended"/>
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_cancelled"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginStart="2dp"
+                app:layout_constraintLeft_toRightOf="@+id/card_skipped"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/space_calendar_details">
 
-                <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/value_skipped"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="end|center_vertical"
-                    app:layout_constraintBaseline_toBaselineOf="@+id/label_skipped"
-                    app:layout_constraintRight_toRightOf="@+id/value_threshold"
-                    tools:text="3"/>
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/label_cancelled"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="start|center_vertical"
-                    android:text="@string/label_classesCancelled"
-                    app:layout_constraintLeft_toLeftOf="@+id/label_threshold"
-                    app:layout_constraintTop_toBottomOf="@+id/label_skipped"/>
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/value_cancelled"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorCancel"
+                        android:gravity="center"
+                        android:paddingBottom="8dp"
+                        android:paddingTop="8dp"
+                        android:textColor="@color/colorTextDark"
+                        android:textSize="24sp"
+                        tools:text="1"/>
 
-                <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/value_cancelled"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="end|center_vertical"
-                    app:layout_constraintBaseline_toBaselineOf="@+id/label_cancelled"
-                    app:layout_constraintRight_toRightOf="@+id/value_threshold"
-                    tools:text="1"/>
-            </android.support.constraint.ConstraintLayout>
-        </android.support.v4.widget.NestedScrollView>
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/label_cancelled"
+                        android:textSize="16sp"/>
+                </android.support.v7.widget.LinearLayoutCompat>
+            </android.support.v7.widget.CardView>
+        </android.support.constraint.ConstraintLayout>
     </android.support.design.widget.CoordinatorLayout>
 </layout>

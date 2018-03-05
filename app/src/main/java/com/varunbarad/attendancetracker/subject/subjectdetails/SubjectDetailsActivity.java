@@ -73,7 +73,7 @@ public class SubjectDetailsActivity extends AppCompatActivity {
                   .showSetEditAttendanceDialogForDate(date);
             }
           }
-        
+  
           @Override
           public void onMonthChanged(Date date) {
           
@@ -146,7 +146,7 @@ public class SubjectDetailsActivity extends AppCompatActivity {
     
     this.dataBinding
         .valueThreshold
-        .setText(this.getString(R.string.message_requiredAttendance, this.subject.getThreshold()));
+        .setText(this.getString(R.string.value_requiredAttendance, this.subject.getThreshold()));
     
     this.dataBinding
         .valueAttended
