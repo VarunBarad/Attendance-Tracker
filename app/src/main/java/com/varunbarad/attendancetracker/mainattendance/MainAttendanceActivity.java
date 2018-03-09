@@ -51,8 +51,6 @@ public class MainAttendanceActivity extends AppCompatActivity implements ListIte
         .setLayoutManager(layoutManager);
   
     this.analytics = FirebaseAnalytics.getInstance(this);
-  
-    AdHelper.loadBannerAd(this.dataBinding);
   }
   
   @Override

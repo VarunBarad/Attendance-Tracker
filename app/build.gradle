@@ -25,7 +25,6 @@ android {
         versionCode 2
         versionName "1.0.1"
         vectorDrawables.useSupportLibrary = true
-        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -54,7 +53,6 @@ android {
 }
 
 ext {
-    multiDexVersion = '1.0.2'
     supportLibraryVersion = '26.1.0'
     constraintLayoutVersion = '1.0.2'
     calendarViewLibraryVersion = 'v1.1'
@@ -63,7 +61,6 @@ ext {
     retrofitVersion = '2.3.0'
     picassoVersion = '2.5.2'
     gsonVersion = '2.8.2'
-    inMobiVersion = '7.0.0'
 
     jUnitVersion = '4.12'
     androidTestRunnerVersion = '1.0.1'
@@ -79,9 +76,6 @@ dependencies {
 
     // Android Data-Binding Annotation Processor for Kotlin
     kapt "com.android.databinding:compiler:${androidPluginVersion}"
-
-    // Google Support Library for Multidex
-    implementation "com.android.support:multidex:${multiDexVersion}"
 
     // Google Design Support libraries
     implementation "com.android.support:appcompat-v7:${supportLibraryVersion}"
@@ -102,9 +96,6 @@ dependencies {
 
     //Firebase
     implementation "com.google.firebase:firebase-core:${firebaseVersion}"
-
-    // InMobi Ad Platform
-    implementation "com.inmobi.monetization:inmobi-ads:${inMobiVersion}"
 
     // Used to load images from network
     implementation "com.squareup.picasso:picasso:${picassoVersion}"
