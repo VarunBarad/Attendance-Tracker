@@ -25,10 +25,6 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="@dimen/margin_activityVertical"
-            android:layout_marginEnd="@dimen/margin_activityHorizontal"
-            android:layout_marginStart="@dimen/margin_activityHorizontal"
-            android:layout_marginTop="@dimen/margin_activityVertical"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <com.stacktips.view.CustomCalendarView
@@ -36,9 +32,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorAccent"
+                app:calendarTitleTextColor="@color/colorText"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent"
+                app:titleLayoutBackgroundColor="@color/colorPrimary"/>
 
             <android.support.v4.widget.Space
                 android:id="@+id/space_calendar_details"
@@ -53,7 +51,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="2dp"
+                android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
+                android:layout_marginStart="2dp"
                 app:cardCornerRadius="4dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/card_attended"
@@ -68,12 +68,12 @@
                         android:id="@+id/value_threshold"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/colorSeparator"
+                        android:background="@color/colorRequired"
                         android:gravity="center"
                         android:paddingBottom="8dp"
                         android:paddingTop="8dp"
                         android:textColor="@color/colorText"
-                        android:textSize="24sp"
+                        android:textSize="20sp"
                         tools:text="75%"/>
 
                     <android.support.v7.widget.AppCompatTextView
@@ -109,7 +109,7 @@
                         android:paddingBottom="8dp"
                         android:paddingTop="8dp"
                         android:textColor="@color/colorText"
-                        android:textSize="24sp"
+                        android:textSize="20sp"
                         tools:text="15"/>
 
                     <android.support.v7.widget.AppCompatTextView
@@ -145,7 +145,7 @@
                         android:paddingBottom="8dp"
                         android:paddingTop="8dp"
                         android:textColor="@color/colorText"
-                        android:textSize="24sp"
+                        android:textSize="20sp"
                         tools:text="3"/>
 
                     <android.support.v7.widget.AppCompatTextView
@@ -161,7 +161,9 @@
                 android:id="@+id/card_cancelled"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
                 android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
                 android:layout_marginStart="2dp"
                 app:layout_constraintLeft_toRightOf="@+id/card_skipped"
                 app:layout_constraintRight_toRightOf="parent"
@@ -181,7 +183,7 @@
                         android:paddingBottom="8dp"
                         android:paddingTop="8dp"
                         android:textColor="@color/colorTextDark"
-                        android:textSize="24sp"
+                        android:textSize="20sp"
                         tools:text="1"/>
 
                     <android.support.v7.widget.AppCompatTextView
