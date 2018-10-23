@@ -25,7 +25,7 @@ public final class DatabaseHelper {
     int threshold = cursor.getInt(cursor.getColumnIndex(AttendanceContract.Subject.COLUMN_THRESHOLD));
     boolean isArchived = (cursor.getInt(cursor.getColumnIndex(AttendanceContract.Subject.COLUMN_ARCHIVED)) == 1);
     
-    return new Subject(id, name, threshold, isArchived, null);
+    return new Subject(id, name, threshold, isArchived);
   }
   
   private static Attendance readOneAttendance(Cursor cursor) {
@@ -247,7 +247,7 @@ public final class DatabaseHelper {
     subjectValues.put(AttendanceContract.Subject.COLUMN_ID, subject.getId());
     subjectValues.put(AttendanceContract.Subject.COLUMN_NAME, subject.getName());
     subjectValues.put(AttendanceContract.Subject.COLUMN_THRESHOLD, subject.getThreshold());
-    subjectValues.put(AttendanceContract.Subject.COLUMN_ARCHIVED, (subject.isArchived() ? 1 : 0));
+    subjectValues.put(AttendanceContract.Subject.COLUMN_ARCHIVED, (subject.getArchived() ? 1 : 0));
     
     return subjectValues;
   }

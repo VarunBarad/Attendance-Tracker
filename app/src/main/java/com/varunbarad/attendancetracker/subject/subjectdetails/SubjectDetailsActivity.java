@@ -94,7 +94,7 @@ public class SubjectDetailsActivity extends AppCompatActivity {
         .inflate(R.menu.subject_details, menu);
     this.menu = menu;
   
-    if (this.subject.isArchived()) {
+    if (this.subject.getArchived()) {
       Drawable iconDrawable = ContextCompat.getDrawable(this, R.drawable.ic_unarchive);
       this.menu.findItem(R.id.action_archive).setIcon(iconDrawable);
     }
@@ -124,7 +124,7 @@ public class SubjectDetailsActivity extends AppCompatActivity {
   
   private void toggleArchive() {
     Drawable iconDrawable;
-    if (this.subject.isArchived()) {
+    if (this.subject.getArchived()) {
       this.subject.setArchived(false);
       
       iconDrawable = ContextCompat.getDrawable(this, R.drawable.ic_archive);
@@ -161,17 +161,17 @@ public class SubjectDetailsActivity extends AppCompatActivity {
         .setText(String.valueOf(this.subject.getCancelled().size()));
     
     {
-      ArrayList<Attendance> attended = this.subject.getAttended();
+      List<Attendance> attended = this.subject.getAttended();
       ArrayList<Date> attendedDates = new ArrayList<>(attended.size());
       for (Attendance a : attended) {
         attendedDates.add(a.getClassDate());
       }
-      ArrayList<Attendance> skipped = this.subject.getSkipped();
+      List<Attendance> skipped = this.subject.getSkipped();
       ArrayList<Date> skippedDates = new ArrayList<>(skipped.size());
       for (Attendance a : skipped) {
         skippedDates.add(a.getClassDate());
       }
-      ArrayList<Attendance> cancelled = this.subject.getCancelled();
+      List<Attendance> cancelled = this.subject.getCancelled();
       ArrayList<Date> cancelledDates = new ArrayList<>(cancelled.size());
       for (Attendance a : cancelled) {
         cancelledDates.add(a.getClassDate());
