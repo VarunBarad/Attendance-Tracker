@@ -22,14 +22,10 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField 'String', "InMobiAccountId", AttendanceTracker_InMobiAccountId
-            buildConfigField 'String', "InMobiPlacementIdMainAttendance", AttendanceTracker_InMobiPlacementIdMainAttendance
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField 'String', "InMobiAccountId", AttendanceTracker_InMobiAccountId
-            buildConfigField 'String', "InMobiPlacementIdMainAttendance", AttendanceTracker_InMobiPlacementIdMainAttendance
         }
     }
 
