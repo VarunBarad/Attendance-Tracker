@@ -59,7 +59,7 @@ dependencies {
     freeImplementation fileTree(dir: 'libs/free', include: ['*.jar'])
 
     // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlinVersion}"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlinVersion}"
 
     // Android Data-Binding Annotation Processor for Kotlin
     kapt "com.android.databinding:compiler:${androidPluginVersion}"
