@@ -4,14 +4,6 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-kapt'
 
 android {
-    signingConfigs {
-        config {
-            keyAlias 'playStoreSigningKey'
-            keyPassword AttendanceTrackerKeyStorePassword
-            storeFile file('../release-documents/Attendance-Tracker.jks')
-            storePassword AttendanceTrackerKeyStorePassword
-        }
-    }
     compileSdkVersion 26
 
     dataBinding {
@@ -38,7 +30,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField 'String', "InMobiAccountId", AttendanceTracker_InMobiAccountId
             buildConfigField 'String', "InMobiPlacementIdMainAttendance", AttendanceTracker_InMobiPlacementIdMainAttendance
-            signingConfig signingConfigs.config
         }
     }
 
