@@ -3,7 +3,7 @@
 buildscript {
     ext {
         androidPluginVersion = '3.0.1'
-        kotlinVersion = '1.2.21'
+        kotlinVersion = '1.2.71'
         googlePlayPluginVersion = '3.1.2'
     }
 
